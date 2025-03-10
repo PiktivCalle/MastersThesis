@@ -2,3 +2,6 @@ neo4j
 langchain
 langchain-openai
 langchain-neo4j
+langchain-ollama
+langchain-chroma
+pysqlite3-binary

@@ -1,0 +1,16 @@
+{
+    "few_shot_examples": [
+        {
+            "prompt" : "How many roads are there in the map?",
+            "query" : "MATCH (r:Road) RETURN count(r) as roads"
+        },
+        {
+            "prompt" : "How many roads contain multiple lanes?",
+            "query" : "MATCH (r:Road)-[:HAS_LANE]->(l:Lane) WITH r, COUNT(l) AS lane_count WHERE lane_count > 1 RETURN COUNT(r) AS roads_with_multiple_lanes;"
+        },
+        {
+            "prompt" : "Return the names of the signs",
+            "query" : "MATCH (o:Object) RETURN DISTINCT o.name AS sign_name"
+        }
+    ]
+}

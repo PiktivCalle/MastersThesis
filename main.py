@@ -2,10 +2,8 @@ from langchain_neo4j import Neo4jGraph, GraphCypherQAChain
 from langchain_openai import ChatOpenAI
 from langchain.prompts.prompt import PromptTemplate
 
+import os
 from dotenv import load_dotenv
-
-URI = "neo4j://172.17.0.2:7687"
-AUTH = ("neo4j", "secretgraph")
 
 CYPHER_GENERATION_TEMPLATE = """
 Task: Generate Cypher statement to query a graph database.
@@ -73,14 +71,14 @@ CYPHER_GENERATION_PROMPT = PromptTemplate(
 def main():
     load_dotenv()
 
-    roadGraph = Neo4jGraph(url=URI, username="neo4j", password="secretgraph", database="neo4j")
+    roadGraph = Neo4jGraph(url=os.environ.get("NEO4J_URI"), username=os.environ.get("NEO4J_USER"), password=os.environ.get("NEO4J_PASSWORD"), database="neo4j")
 
     llama = 'llama3.2-vision:latest'
     gpt = "gpt-4o-mini"
     llm = ChatOpenAI(
         openai_api_key="ollama",
         temperature=0,
-        openai_api_base="http://192.168.100.112:11434/v1",
+        openai_api_base=os.environ.get("OLLAMA_URI"),
         model=llama
     )
     
