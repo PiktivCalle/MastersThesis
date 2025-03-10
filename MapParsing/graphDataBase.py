@@ -8,103 +8,97 @@ class RoadCreation:
         self.driver =  GraphDatabase.driver(uri, auth=auth)
         self.database = database
 
-    def createRoad(self, id_, length_, initialHeading_, finalHeading_, isJunction_):
-        query = (
-            "CREATE ( :Road {id: $id, length: $length, initialHeading: $initialHeading, finalHeading: $finalHeading, isJunction: $isJunction} )"
-        )
+    def createRoads(self, roadData_):
+        query = """
+            UNWIND COALESCE($data, []) AS entry
+            CREATE ( :Road {id: entry.id, length: entry.length, initialHeading: entry.initial_heading, finalHeading: entry.final_heading, isJunction: entry.is_junction} )
+        """
         
         try:
             self.driver.execute_query(
                 query,
-                id=id_,
-                length=length_,
-                initialHeading=initialHeading_,
-                finalHeading=finalHeading_,
-                isJunction=isJunction_,
+                data=roadData_,
                 database_= self.database
             )
         except exceptions.Neo4jError as e:
             print(f"Creating road raised an error: \n{e}\n")
+        except Exception as e:
+            print(f"Adding preceding lane relationship raised an error: \n{e}\n")
             
-    def createLane(self, id_, type_, roadId_, side_):
+    def createLanes(self, laneData_):
         query = """
-            MATCH (r:Road) WHERE r.id = $roadId
-            CREATE ( l:Lane {id: $id, type: $type} )
-            CREATE (r)-[:HAS_LANE {side: $side}]->(l)
+            UNWIND COALESCE($data, []) AS entry
+            MATCH (r:Road) WHERE r.id = entry.roadId
+            CREATE ( l:Lane {id: entry.id, type: entry.type, travelDirection: entry.travel_direciton} )
+            CREATE (r)-[:HAS_LANE {side: entry.side}]->(l)
         """
         
         try:
             self.driver.execute_query(
                 query,
-                id=id_,
-                type=type_,
-                roadId=roadId_,
-                side=side_,
+                data=laneData_,
                 database_= self.database
             )
         except exceptions.Neo4jError as e:
             print(f"Creating lane raised an error: \n{e}\n")
+        except Exception as e:
+            print(f"Adding preceding lane relationship raised an error: \n{e}\n")
 
-    def createSignal(self, id_, type_, orientation_, roadId_, distance_, name_):
+    def createSignals(self, signalData_):
         query = """
-            MATCH (r:Road) WHERE r.id = $roadId
-            CREATE (s:Signal {id: $id, type: $type, orientation: $orientation, name: $name} )
-            CREATE (r)-[:HAS_SIGNAL {atDistance: $distance}]->(s)
+            UNWIND COALESCE($data, []) AS entry
+            MATCH (r:Road) WHERE r.id = entry.roadId
+            CREATE (s:Signal {id: entry.id, type: entry.type, orientation: entry.orientation, name: entry.name} )
+            CREATE (r)-[:HAS_SIGNAL {atDistance: entry.distance}]->(s)
         """
         
         try:
             self.driver.execute_query(
                 query,
-                id=id_,
-                type=type_,
-                orientation=orientation_,
-                roadId=roadId_,
-                distance=distance_,
-                name=name_,
+                data=signalData_,
                 database_= self.database
             )
         except exceptions.Neo4jError as e:
             print(f"Creating signal raised an error: \n{e}\n")
+        except Exception as e:
+            print(f"Adding preceding lane relationship raised an error: \n{e}\n")
 
-    def createObject(self, id_, type_, orientation_, roadId_, distance_, name_):
+    def createObjects(self, objectData_):
         query = """
-            MATCH (r:Road) WHERE r.id = $roadId
-            CREATE (o:Object {id: $id, type: $type, orientation: $orientation, name: $name} )
-            CREATE (r)-[:HAS_OBJECT {atDistance: $distance}]->(o)
+            UNWIND COALESCE($data, []) AS entry
+            MATCH (r:Road) WHERE r.id = entry.roadId
+            CREATE (o:Object {id: entry.id, type: entry.type, orientation: entry.orientation, name: entry.name} )
+            CREATE (r)-[:HAS_OBJECT {atDistance: entry.distance}]->(o)
         """
         
         try:
             self.driver.execute_query(
                 query,
-                id=id_,
-                type=type_,
-                orientation=orientation_,
-                roadId=roadId_,
-                distance=distance_,
-                name=name_,
+                data=objectData_,
                 database_= self.database
             )
         except exceptions.Neo4jError as e:
             print(f"Creating object raised an error: \n{e}\n")
+        except Exception as e:
+            print(f"Adding preceding lane relationship raised an error: \n{e}\n")
 
-    def addLanePrecedesRelationship(self, roadId_, laneId_, succeedingRoadId_, succeedingLaneId_, direction_):
+    def addLanePrecedesRelationships(self, precedingLaneData_):
         query = """
+            UNWIND COALESCE($data, []) AS entry
             MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane), (r2)-[:HAS_LANE]->(l2:Lane)
-            WHERE r1.id = $roadId AND r2.id = $succeedingRoadId AND l1.id = $laneId AND l2.id = $succeedingLaneId
-            CREATE (l1)-[:PRECEDES {direction: $direction}]->(l2)
+            WHERE r1.id = entry.roadId AND r2.id = entry.succeedingRoadId AND l1.id = entry.laneId AND l2.id = entry.succeedingLaneId
+            CREATE (l1)-[:PRECEDES {direction: entry.direction}]->(l2)
         """
         
         try:
             self.driver.execute_query(
                 query,
-                roadId=roadId_,
-                laneId=laneId_,
-                succeedingRoadId=succeedingRoadId_,
-                succeedingLaneId=succeedingLaneId_,
-                direction=direction_,
+                data=precedingLaneData_,
                 database_= self.database
             )
         except exceptions.Neo4jError as e:
+            print(f"Adding preceding lane relationship raised an error: \n{e}\n")
+        except Exception as e:
             print(f"Adding preceding lane relationship raised an error: \n{e}\n")
 
     def __del__(self):
@@ -113,22 +107,68 @@ class RoadCreation:
 def insertGraphIntoDB(mapDict):
     database = "neo4j"
     rc = RoadCreation(URI, AUTH, database)
+
+    roadData = []
+    laneData = []
+    precedingLaneData = []
+    signalData = []
+    objectData = []
     for _, road in mapDict["roads"].items():
-        rc.createRoad(road["id"], road["length"], road["initial_heading"], road["final_heading"], road["is_junction"])
+        roadData.append({
+            "id": road["id"],
+            "length": road["length"],
+            "initial_heading": road["initial_heading"],
+            "final_heading": road["final_heading"],
+            "is_junction": road["is_junction"]
+        })
+
+        for lane_side in road["lanes"]:
+            for lane in road["lanes"][lane_side]:
+                laneData.append({
+                    "id": lane["id"],
+                    "type": lane["type"],
+                    "roadId": road["id"],
+                    "travel_direction": lane["travel_direction"],
+                    "side": lane_side
+                })
         
         for lane_side in road["lanes"]:
             for lane in road["lanes"][lane_side]:
-                rc.createLane(lane["id"], lane["type"], road["id"], lane_side)
-
-        for lane_side in road["lanes"]:
-            for lane in road["lanes"][lane_side]:
                 for successor in lane["successors"]:
-                    rc.addLanePrecedesRelationship(road["id"], lane["id"], successor["successor_road_id"], successor["successor_lane_id"], successor["direction"])
+                    precedingLaneData.append(
+                        {
+                            "roadId": road["id"],
+                            "succeedingRoadId": successor["successor_road_id"], 
+                            "laneId": lane["id"], 
+                            "succeedingLaneId": successor["successor_lane_id"], 
+                            "direction": successor["direction"]
+                        }
+                    )
 
         if "signals" in road:
             for signal in road["signals"]:
-                rc.createSignal(signal["id"], signal["type"], signal["orientation"], road["id"], signal["position"], signal["name"])
+                signalData.append({
+                    "id": signal["id"],
+                    "type": signal["type"],
+                    "orientation": signal["orientation"],
+                    "roadId": road["id"],
+                    "position": signal["position"],
+                    "name": signal["name"]
+                })
 
         if "objects" in road:
             for object in road["objects"]:
-                rc.createObject(object["id"], object["type"], object["orientation"], road["id"], object["position"], object["name"])
+                objectData.append({
+                    "id": object["id"],
+                    "type": object["type"],
+                    "orientation": object["orientation"],
+                    "roadId": road["id"],
+                    "position": object["position"],
+                    "name": object["name"]
+                })
+    
+    rc.createRoads(roadData)
+    rc.createLanes(laneData)
+    rc.createSignals(signalData)
+    rc.createObjects(objectData)
+    rc.addLanePrecedesRelationships(precedingLaneData)

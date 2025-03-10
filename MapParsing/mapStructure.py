@@ -1,8 +1,8 @@
 import math
 import xml.etree.ElementTree as ET
 
-def create_graph(file_path):
-    tree = ET.parse(file_path)
+def create_graph(file_name):
+    tree = ET.parse(f"MapParsing/maps/{file_name}")
     root = tree.getroot()
     parsed_data = {"roads": {}, "junctions": {}}
     
@@ -37,10 +37,12 @@ def create_graph(file_path):
                 for lane in lanes:
                     predecessor_lane = lane.find("link/predecessor")
                     successor_lane = lane.find("link/successor")
+                    vector_lane = lane.find("userData/vectorLane")
 
                     lane_data = {
                         "id": lane.get("id"),
                         "type": lane.get("type"),
+                        "travel_direction": vector_lane.get("travelDir") if lane.get("type") != "driving" else None,
                         "predecessors": [{
                             "predecessor_road_id": predecessor_road_id,
                             "predecessor_lane_id": predecessor_lane.get("id")
@@ -127,7 +129,7 @@ def create_graph(file_path):
                         }
 
                         lane["predecessors"].append(predecessor_entry) if predecessor_entry not in lane["predecessors"] else None
-                    
+
             junction_data["connections"].append({
                 "incoming_road": incoming_road_id,
                 "connecting_road": connecting_road_id,
