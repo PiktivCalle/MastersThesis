@@ -42,7 +42,7 @@ def create_graph(file_name):
                     lane_data = {
                         "id": lane.get("id"),
                         "type": lane.get("type"),
-                        "travel_direction": vector_lane.get("travelDir") if lane.get("type") != "driving" else None,
+                        "travel_direction": vector_lane.get("travelDir"),
                         "predecessors": [{
                             "predecessor_road_id": predecessor_road_id,
                             "predecessor_lane_id": predecessor_lane.get("id")
@@ -53,7 +53,6 @@ def create_graph(file_name):
                             "direction": None
                         }] if successor_lane is not None else [],
                     }
-
                     road_data["lanes"][lane_side].append(lane_data)
 
         if len(road_data["lanes"]["left"]) == 0:

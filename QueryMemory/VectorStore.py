@@ -29,8 +29,8 @@ class VectorStore:
 
         self.combineDifferentEmbeddingModelMemoryItems()
 
-        print("==========Loaded ",database_path," Memory, Now the database has ", len(
-            self.query_memory._collection.get(include=['embeddings'])['embeddings']), " items.==========")
+        print("\n==========Loaded ",database_path," memory. The database has ", len(
+            self.query_memory._collection.get(include=['embeddings'])['embeddings']), " items.==========\n")
 
     def createEmbeddingModel(self, embedding_model: str):
         if embedding_model == "ollama":
@@ -58,10 +58,10 @@ class VectorStore:
 
     def combineDifferentEmbeddingModelMemoryItems(self):
         other_embedding_model = "openAi" if self.embedding_model == "ollama" else "ollama"
-        other_memory_database_path = os.path.join('./VectorDB', f'{other_embedding_model}_embedding/')
+        other_database_path = os.path.join('./VectorDB', f'{other_embedding_model}_embedding/')
         other_query_memory = Chroma(
             embedding_function=self.createEmbeddingModel(other_embedding_model),
-            persist_directory=other_memory_database_path
+            persist_directory=other_database_path
         )
         other_documents = other_query_memory._collection.get(
             include=['metadatas']
@@ -78,11 +78,11 @@ class VectorStore:
     def addExampleToMemory(self, prompt: str, query: str):
         self.query_memory.add_texts(texts=[prompt], metadatas=[{"prompt": prompt, "query": query}])
         
-        print("Add a memory item. Now the database has ", len(
-                self.query_memory._collection.get(include=['embeddings'])['embeddings']), " items.")
+        print("Added a memory item. Now the database has ", len(
+                self.query_memory._collection.get(include=['embeddings'])['embeddings']), " items.\n")
 
 
-    def retrieveExamples(self, user_query: str, k: int = 5):
+    def retrieveExamples(self, user_query: str, k: int = 5, maximum_accepted_similarity_score: float = 0.8):
         similarity_results = self.query_memory.similarity_search_with_score(
             query=user_query,
             k=k
@@ -90,16 +90,8 @@ class VectorStore:
 
         fewshot_results = []
         for idx in range(0, len(similarity_results)):
+            if similarity_results[idx][-1] > maximum_accepted_similarity_score: continue
+
             fewshot_results.append(similarity_results[idx][0].metadata)
             
         return fewshot_results
-
-    def combineMemory(self, other_memory: Chroma):
-        pass
-
-
-def main():
-    vs = VectorStore()
-
-if __name__ == "__main__":
-    main()

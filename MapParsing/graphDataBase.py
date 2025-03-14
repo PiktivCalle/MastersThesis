@@ -1,11 +1,11 @@
 from neo4j import GraphDatabase, exceptions
-
-URI = "neo4j://localhost"
-AUTH = ("neo4j", "secretgraph")
+from dotenv import load_dotenv
+import os
 
 class RoadCreation:
-    def __init__(self, uri, auth, database):
-        self.driver =  GraphDatabase.driver(uri, auth=auth)
+    def __init__(self, database):
+        load_dotenv()
+        self.driver =  GraphDatabase.driver(uri=os.environ.get("NEO4J_URI"), auth=(os.environ.get("NEO4J_USER"), os.environ.get("NEO4J_PASSWORD")))
         self.database = database
 
     def createRoads(self, roadData_):
@@ -29,10 +29,10 @@ class RoadCreation:
         query = """
             UNWIND COALESCE($data, []) AS entry
             MATCH (r:Road) WHERE r.id = entry.roadId
-            CREATE ( l:Lane {id: entry.id, type: entry.type, travelDirection: entry.travel_direciton} )
+            CREATE ( l:Lane {id: entry.id, type: entry.type, travelDirection: entry.travel_direction} )
             CREATE (r)-[:HAS_LANE {side: entry.side}]->(l)
         """
-        
+
         try:
             self.driver.execute_query(
                 query,
@@ -106,7 +106,7 @@ class RoadCreation:
 
 def insertGraphIntoDB(mapDict):
     database = "neo4j"
-    rc = RoadCreation(URI, AUTH, database)
+    rc = RoadCreation(database)
 
     roadData = []
     laneData = []
@@ -166,7 +166,7 @@ def insertGraphIntoDB(mapDict):
                     "position": object["position"],
                     "name": object["name"]
                 })
-    
+
     rc.createRoads(roadData)
     rc.createLanes(laneData)
     rc.createSignals(signalData)
