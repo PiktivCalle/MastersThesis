@@ -1,0 +1,7069 @@
+{
+  "roads": {
+    "0": {
+      "id": "0",
+      "length": 36.36000000000001,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "11",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "48",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "11",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "48",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "41",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "52",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "11",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "11",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "40",
+              "lane_id": "-1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "46",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "11",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "40",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "11",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "40",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "362",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 35.84046658226143,
+          "orientation": "opposite"
+        }
+      ],
+      "objects": [
+        {
+          "id": "435",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 17.472293596265814,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 3.1410614169049995,
+      "final_heading": 3.1410614169049995,
+      "is_junction": "-1"
+    },
+    "1": {
+      "id": "1",
+      "length": 157.54999999999998,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "28",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "70",
+              "lane_id": "-1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "28",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "70",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "61",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "75",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "27",
+              "lane_id": "1",
+              "direction": "right"
+            },
+            {
+              "road_id": "41",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "33",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "33",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "40",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "62",
+              "lane_id": "-1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "67",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "40",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "62",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "40",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "62",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "360",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 2.149267513132898,
+          "orientation": "along"
+        }
+      ],
+      "objects": [
+        {
+          "id": "447",
+          "type": "-1",
+          "name": "Speed_60",
+          "position": 12.472307231641363,
+          "orientation": "opposite"
+        },
+        {
+          "id": "441",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 143.93046462334252,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 3.1410614169049995,
+      "final_heading": 3.1414859243253437,
+      "is_junction": "-1"
+    },
+    "2": {
+      "id": "2",
+      "length": 42.27000000000001,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "77",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "123",
+              "lane_id": "-1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "77",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "123",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "117",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "131",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "61",
+              "lane_id": "1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "83",
+              "lane_id": "1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "62",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "85",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "85",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "118",
+              "lane_id": "-1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "128",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "62",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "118",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "62",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "118",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "364",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 2.1614047486753507,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 3.1414859243253437,
+      "final_heading": 3.1419185634019318,
+      "is_junction": "-1"
+    },
+    "3": {
+      "id": "3",
+      "length": 68.35001583193343,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "13",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "133",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "13",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "133",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "13",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "117",
+              "lane_id": "1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "139",
+              "lane_id": "1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "118",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "141",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "141",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "13",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "13",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "118",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "13",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "118",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "371",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 2.2235144284745925,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 3.1419185634019318,
+      "final_heading": 3.1419185634019318,
+      "is_junction": "-1"
+    },
+    "4": {
+      "id": "4",
+      "length": 224.22,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "280",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "307",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "280",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "307",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "279",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "304",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "312",
+              "lane_id": "1",
+              "direction": "right"
+            },
+            {
+              "road_id": "318",
+              "lane_id": "1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "313",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "319",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "319",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "284",
+              "lane_id": "-1",
+              "direction": "left"
+            },
+            {
+              "road_id": "302",
+              "lane_id": "-1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "297",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "314",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "297",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "314",
+              "lane_id": "-1"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "392",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 1.6188657029455844,
+          "orientation": "along"
+        },
+        {
+          "id": "387",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 219.9401750698669,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 6.282738513498045,
+      "final_heading": 6.282738513498045,
+      "is_junction": "-1"
+    },
+    "5": {
+      "id": "5",
+      "length": 69.63,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "20",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "98",
+              "lane_id": "-1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "20",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "98",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "93",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "103",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "20",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "20",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "94",
+              "lane_id": "-1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "102",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "20",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "94",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "20",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "94",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "366",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 65.38064702717601,
+          "orientation": "opposite"
+        }
+      ],
+      "objects": [
+        {
+          "id": "444",
+          "type": "-1",
+          "name": "Speed_60",
+          "position": 15.791434952172347,
+          "orientation": "opposite"
+        },
+        {
+          "id": "438",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 50.44151569233283,
+          "orientation": "opposite"
+        },
+        {
+          "id": "443",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 50.816715766194896,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 6.282649607197191,
+      "final_heading": 6.282649607197191,
+      "is_junction": "-1"
+    },
+    "6": {
+      "id": "6",
+      "length": 224.09999999999997,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "104",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "165",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "104",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "165",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "158",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "169",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "93",
+              "lane_id": "1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "108",
+              "lane_id": "1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "94",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "109",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "157",
+              "lane_id": "-1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "163",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "94",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "157",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "94",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "157",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "367",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 4.820446184510948,
+          "orientation": "along"
+        },
+        {
+          "id": "373",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 223.02809955964926,
+          "orientation": "opposite"
+        }
+      ],
+      "objects": [
+        {
+          "id": "449",
+          "type": "-1",
+          "name": "Speed_90",
+          "position": 6.629510780789233,
+          "orientation": "opposite"
+        },
+        {
+          "id": "445",
+          "type": "-1",
+          "name": "Speed_60",
+          "position": 180.60954823325804,
+          "orientation": "opposite"
+        },
+        {
+          "id": "439",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 201.9190142325008,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 6.282649607197191,
+      "final_heading": 0.0,
+      "is_junction": "-1"
+    },
+    "7": {
+      "id": "7",
+      "length": 36.350000803097146,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "14",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "145",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "14",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "145",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "14",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "144",
+              "lane_id": "1",
+              "direction": "right"
+            },
+            {
+              "road_id": "158",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "150",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "157",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "14",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "14",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "157",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "14",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "157",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "374",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 2.19192890535237,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 0.0,
+      "final_heading": 0.0,
+      "is_junction": "-1"
+    },
+    "8": {
+      "id": "8",
+      "length": 308.69004324444666,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "14",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "11",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "14",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "11",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "11",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "14",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "14",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "11",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "14",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "11",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "14",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "11",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "objects": [
+        {
+          "id": "432",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 7.121703224546141,
+          "orientation": "along"
+        },
+        {
+          "id": "450",
+          "type": "-1",
+          "name": "Speed_90",
+          "position": 17.838309251301514,
+          "orientation": "opposite"
+        },
+        {
+          "id": "433",
+          "type": "-1",
+          "name": "Speed_90",
+          "position": 17.838309251301514,
+          "orientation": "opposite"
+        },
+        {
+          "id": "448",
+          "type": "-1",
+          "name": "Speed_60",
+          "position": 29.451709311409047,
+          "orientation": "along"
+        },
+        {
+          "id": "446",
+          "type": "-1",
+          "name": "Speed_60",
+          "position": 271.7254212522783,
+          "orientation": "opposite"
+        },
+        {
+          "id": "452",
+          "type": "-1",
+          "name": "Speed_90",
+          "position": 280.48472551836437,
+          "orientation": "along"
+        },
+        {
+          "id": "440",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 286.28548276821374,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 1.571185005327496,
+      "final_heading": 1.56959634674438,
+      "is_junction": "-1"
+    },
+    "9": {
+      "id": "9",
+      "length": 43.60000000000001,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "189",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "335",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "189",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "335",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "333",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "354",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "184",
+              "lane_id": "1",
+              "direction": "left"
+            },
+            {
+              "road_id": "193",
+              "lane_id": "1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "183",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "183",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "188",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "334",
+              "lane_id": "-1",
+              "direction": "left"
+            },
+            {
+              "road_id": "355",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "185",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "355",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "185",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "355",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "377",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 1.6524851689779223,
+          "orientation": "along"
+        },
+        {
+          "id": "393",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 42.5275052151826,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 0.00012185278518095366,
+      "final_heading": 0.00012185278518095366,
+      "is_junction": "-1"
+    },
+    "10": {
+      "id": "10",
+      "length": 157.99,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "248",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "343",
+              "lane_id": "-1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "248",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "343",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "232",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "253",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "341",
+              "lane_id": "1",
+              "direction": "right"
+            },
+            {
+              "road_id": "354",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "339",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "355",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "229",
+              "lane_id": "-1",
+              "direction": "right"
+            },
+            {
+              "road_id": "247",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "223",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "355",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "223",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "355",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "395",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 2.0224627443757024,
+          "orientation": "along"
+        },
+        {
+          "id": "381",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 154.26748561934738,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 0.00012185278518095366,
+      "final_heading": 0.00012185278518095366,
+      "is_junction": "-1"
+    },
+    "11": {
+      "id": "11",
+      "length": 15.822642220972062,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "0",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "8",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "0",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "8",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "8",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "0",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "0",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "8",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "0",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "8",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "0",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "8",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.56959634674438,
+      "final_heading": 3.1410614169049995,
+      "is_junction": "-1"
+    },
+    "12": {
+      "id": "12",
+      "length": 224.25,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "203",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "274",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "203",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "274",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "195",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "208",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "257",
+              "lane_id": "1",
+              "direction": "left"
+            },
+            {
+              "road_id": "273",
+              "lane_id": "1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "256",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "256",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "277",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "201",
+              "lane_id": "-1",
+              "direction": "right"
+            },
+            {
+              "road_id": "209",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "197",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "258",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "197",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "258",
+              "lane_id": "1"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "385",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 1.6205404329645807,
+          "orientation": "along"
+        },
+        {
+          "id": "378",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 221.66848069407507,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 6.283104047720172,
+      "final_heading": 6.283104047720172,
+      "is_junction": "-1"
+    },
+    "13": {
+      "id": "13",
+      "length": 17.216960944205255,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "15",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "3",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "15",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "3",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "3",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "15",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "15",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "3",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "15",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "3",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "15",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "3",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1419185634019318,
+      "final_heading": 4.712003772381724,
+      "is_junction": "-1"
+    },
+    "14": {
+      "id": "14",
+      "length": 16.381841468586707,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "8",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "7",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "8",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "7",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "7",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "8",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "8",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "7",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "8",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "7",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "8",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "7",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0.0,
+      "final_heading": 1.571185005327496,
+      "is_junction": "-1"
+    },
+    "15": {
+      "id": "15",
+      "length": 307.64003332402933,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "13",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "20",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "13",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "20",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "20",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "13",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "13",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "20",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "13",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "20",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "13",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "20",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "objects": [
+        {
+          "id": "451",
+          "type": "-1",
+          "name": "Speed_90",
+          "position": 13.292644165831353,
+          "orientation": "opposite"
+        },
+        {
+          "id": "437",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 117.80236051685898,
+          "orientation": "along"
+        },
+        {
+          "id": "442",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 284.95062411881463,
+          "orientation": "opposite"
+        },
+        {
+          "id": "453",
+          "type": "-1",
+          "name": "Speed_90",
+          "position": 291.5694608559151,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 4.712003772381724,
+      "final_heading": 4.7122584150601625,
+      "is_junction": "-1"
+    },
+    "16": {
+      "id": "16",
+      "length": 35.629999999999995,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "48",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "244",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "48",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "244",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "244",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "247",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "33",
+              "lane_id": "1",
+              "direction": "left"
+            },
+            {
+              "road_id": "52",
+              "lane_id": "1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "27",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "27",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "46",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "243",
+              "lane_id": "-1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "253",
+              "lane_id": "-1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "28",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "248",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "28",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "248",
+              "lane_id": "-1"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "361",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 2.239218439682459,
+          "orientation": "along"
+        },
+        {
+          "id": "383",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 33.77104280341674,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 4.711784969424536,
+      "final_heading": 4.711784969424536,
+      "is_junction": "-1"
+    },
+    "17": {
+      "id": "17",
+      "length": 51.55000000000001,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "244",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "295",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "244",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "295",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "284",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "295",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "232",
+              "lane_id": "1",
+              "direction": "left"
+            },
+            {
+              "road_id": "244",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "229",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "243",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "279",
+              "lane_id": "-1",
+              "direction": "right"
+            },
+            {
+              "road_id": "296",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "223",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "280",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "223",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "280",
+              "lane_id": "1"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "382",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 0.7982745199162199,
+          "orientation": "along"
+        },
+        {
+          "id": "389",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 49.58102929561441,
+          "orientation": "opposite"
+        }
+      ],
+      "objects": [
+        {
+          "id": "434",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 45.68731535696464,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 4.711784969424536,
+      "final_heading": 4.711784969424536,
+      "is_junction": "-1"
+    },
+    "18": {
+      "id": "18",
+      "length": 41.98000000000002,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "219",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "295",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "219",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "295",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "209",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "219",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "295",
+              "lane_id": "1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "304",
+              "lane_id": "1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "296",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "302",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "208",
+              "lane_id": "-1",
+              "direction": "right"
+            },
+            {
+              "road_id": "218",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "203",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "297",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "203",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "297",
+              "lane_id": "1"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "379",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 40.481017340160584,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 4.711784969424536,
+      "final_heading": 4.711784969424536,
+      "is_junction": "-1"
+    },
+    "19": {
+      "id": "19",
+      "length": 108.28999999999999,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "145",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "219",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "145",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "219",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "144",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "163",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "195",
+              "lane_id": "1",
+              "direction": "left"
+            },
+            {
+              "road_id": "219",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "201",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "218",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "150",
+              "lane_id": "-1",
+              "direction": "left"
+            },
+            {
+              "road_id": "169",
+              "lane_id": "-1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "165",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "197",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "165",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "197",
+              "lane_id": "1"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "372",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 106.8709691228843,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 4.711784969424536,
+      "final_heading": 4.711784969424536,
+      "is_junction": "-1"
+    },
+    "20": {
+      "id": "20",
+      "length": 16.704130652863387,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "5",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "15",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "5",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "15",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "15",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "5",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "5",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "15",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "5",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "15",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "5",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "15",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.7122584150601625,
+      "final_heading": 6.282649607197191,
+      "is_junction": "-1"
+    },
+    "21": {
+      "id": "21",
+      "length": 34.91,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "123",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "189",
+              "lane_id": "-1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "123",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "189",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "179",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "193",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "131",
+              "lane_id": "1",
+              "direction": "right"
+            },
+            {
+              "road_id": "141",
+              "lane_id": "1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "128",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "139",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "139",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "178",
+              "lane_id": "-1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "188",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "133",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "178",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "133",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "178",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "370",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 1.6426244316156202,
+          "orientation": "along"
+        },
+        {
+          "id": "376",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 34.21737944908484,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 4.712540993073281,
+      "final_heading": 4.712540993073281,
+      "is_junction": "-1"
+    },
+    "22": {
+      "id": "22",
+      "length": 51.69,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "185",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "307",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "185",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "307",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "312",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "330",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "179",
+              "lane_id": "1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "183",
+              "lane_id": "1",
+              "direction": "right"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "178",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "184",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "184",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "313",
+              "lane_id": "-1",
+              "direction": "left"
+            },
+            {
+              "road_id": "331",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "178",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "331",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "178",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "331",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "375",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 2.5826160105737443,
+          "orientation": "along"
+        },
+        {
+          "id": "391",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 51.277378442428024,
+          "orientation": "opposite"
+        }
+      ],
+      "objects": [
+        {
+          "id": "436",
+          "type": "-1",
+          "name": "Speed_30",
+          "position": 47.35066888664694,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 4.712540993073281,
+      "final_heading": 4.712540993073281,
+      "is_junction": "-1"
+    },
+    "23": {
+      "id": "23",
+      "length": 44.49000000000004,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "274",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "314",
+              "lane_id": "-1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "274",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "314",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "272",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "273",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "319",
+              "lane_id": "1",
+              "direction": "right"
+            },
+            {
+              "road_id": "330",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "318",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "318",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "331",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "271",
+              "lane_id": "-1",
+              "direction": "straight"
+            },
+            {
+              "road_id": "277",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "271",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "331",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "271",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "331",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "390",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 2.862615155929679,
+          "orientation": "along"
+        },
+        {
+          "id": "386",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 43.127377685183546,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 4.712540993073281,
+      "final_heading": 4.712540993073281,
+      "is_junction": "-1"
+    },
+    "24": {
+      "id": "24",
+      "length": 108.97000000000006,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "104",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "258",
+              "lane_id": "1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "104",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "258",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "102",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "108",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "256",
+              "lane_id": "1",
+              "direction": "right"
+            },
+            {
+              "road_id": "272",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "257",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "257",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "271",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "103",
+              "lane_id": "-1",
+              "direction": "right"
+            },
+            {
+              "road_id": "109",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "98",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "271",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "98",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "271",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "384",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 1.9126142466725138,
+          "orientation": "along"
+        },
+        {
+          "id": "368",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 107.69736096965691,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 4.712540993073281,
+      "final_heading": 4.712540993073281,
+      "is_junction": "-1"
+    },
+    "25": {
+      "id": "25",
+      "length": 35.18,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "70",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "343",
+              "lane_id": "-1"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "70",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "343",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "334",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "341",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "75",
+              "lane_id": "1",
+              "direction": "right"
+            },
+            {
+              "road_id": "85",
+              "lane_id": "1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "67",
+              "lane_id": "-1"
+            },
+            {
+              "road_id": "83",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "83",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "333",
+              "lane_id": "-1",
+              "direction": "right"
+            },
+            {
+              "road_id": "339",
+              "lane_id": "-1",
+              "direction": "left"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "77",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "335",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "77",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "335",
+              "lane_id": "1"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "363",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 1.8563174285927908,
+          "orientation": "along"
+        },
+        {
+          "id": "394",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 33.96384751931783,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 4.711174208735285,
+      "final_heading": 4.711174208735285,
+      "is_junction": "-1"
+    },
+    "27": {
+      "id": "27",
+      "length": 18.672762813500928,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "1",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "16",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 4.711784969424529,
+      "is_junction": "26"
+    },
+    "28": {
+      "id": "28",
+      "length": 11.87184353455214,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "1",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "16",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "1",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "16",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 6.282654070494793,
+      "final_heading": 4.711784969424536,
+      "is_junction": "26"
+    },
+    "33": {
+      "id": "33",
+      "length": 18.472233411012237,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "16",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "1",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.5701923158347366,
+      "final_heading": 3.141061416905,
+      "is_junction": "26"
+    },
+    "40": {
+      "id": "40",
+      "length": 22.599999999999994,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "0",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "1",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "0",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "1",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "0",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "1",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.141061416905,
+      "final_heading": 3.141061416905,
+      "is_junction": "26"
+    },
+    "41": {
+      "id": "41",
+      "length": 22.599999999999994,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "0",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "1",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 0,
+      "is_junction": "26"
+    },
+    "46": {
+      "id": "46",
+      "length": 18.718856189075535,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "0",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "16",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.141061416905,
+      "final_heading": 4.711784969424534,
+      "is_junction": "26"
+    },
+    "48": {
+      "id": "48",
+      "length": 12.080292848844747,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "16",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "0",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "16",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "0",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.5701923158347428,
+      "final_heading": 6.282654070494793,
+      "is_junction": "26"
+    },
+    "52": {
+      "id": "52",
+      "length": 18.862042494571618,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "0",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "16",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.5701923158347357,
+      "final_heading": 0,
+      "is_junction": "26"
+    },
+    "61": {
+      "id": "61",
+      "length": 23.120000000000033,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "1",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "2",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "signals": [
+        {
+          "id": "365",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 0.008563742172537945,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 0,
+      "final_heading": 0,
+      "is_junction": "54"
+    },
+    "62": {
+      "id": "62",
+      "length": 23.120000000000033,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "1",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "2",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "1",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "2",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "1",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "2",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1414859243253437,
+      "final_heading": 3.1414859243253437,
+      "is_junction": "54"
+    },
+    "67": {
+      "id": "67",
+      "length": 19.931494852435797,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "1",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "25",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1414859243253437,
+      "final_heading": 4.711174208735285,
+      "is_junction": "54"
+    },
+    "70": {
+      "id": "70",
+      "length": 12.996730889347337,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "1",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "25",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "1",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "25",
+              "lane_id": "2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1414859243253437,
+      "final_heading": 4.711174208735285,
+      "is_junction": "54"
+    },
+    "75": {
+      "id": "75",
+      "length": 19.948505333626404,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "1",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "25",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.5695815551454926,
+      "final_heading": 0,
+      "is_junction": "54"
+    },
+    "77": {
+      "id": "77",
+      "length": 12.040743178027224,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "2",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "25",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "2",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "25",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 6.283078577915137,
+      "final_heading": 4.711174208735285,
+      "is_junction": "54"
+    },
+    "83": {
+      "id": "83",
+      "length": 19.12713699862836,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "2",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "25",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 4.711174208735285,
+      "is_junction": "54"
+    },
+    "85": {
+      "id": "85",
+      "length": 18.859180720444087,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "25",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "2",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.5695815551454917,
+      "final_heading": 3.1414859243253446,
+      "is_junction": "54"
+    },
+    "93": {
+      "id": "93",
+      "length": 21.980000000000004,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "5",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "6",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.1410569536073982,
+      "final_heading": 3.1410569536073982,
+      "is_junction": "87"
+    },
+    "94": {
+      "id": "94",
+      "length": 21.980000000000004,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "5",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "6",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "5",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "6",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "5",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "6",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 0,
+      "is_junction": "87"
+    },
+    "98": {
+      "id": "98",
+      "length": 11.789313349681928,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "5",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "24",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "5",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "24",
+              "lane_id": "-2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 6.282649607197191,
+      "final_heading": 1.570948339483488,
+      "is_junction": "87"
+    },
+    "102": {
+      "id": "102",
+      "length": 17.408996976363042,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "5",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "24",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 1.5709483394834882,
+      "is_junction": "87"
+    },
+    "103": {
+      "id": "103",
+      "length": 17.40899697636305,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "24",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "5",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073281,
+      "final_heading": 3.1410569536072845,
+      "is_junction": "87"
+    },
+    "104": {
+      "id": "104",
+      "length": 12.231862101908822,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "6",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "24",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "6",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "24",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1410569536073987,
+      "final_heading": 1.570948339483488,
+      "is_junction": "87"
+    },
+    "108": {
+      "id": "108",
+      "length": 17.745515736178326,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "24",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "6",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.1410569536074995,
+      "final_heading": 1.5709483394834898,
+      "is_junction": "87"
+    },
+    "109": {
+      "id": "109",
+      "length": 17.745515736178284,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "24",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "6",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073283,
+      "final_heading": 0,
+      "is_junction": "87"
+    },
+    "117": {
+      "id": "117",
+      "length": 23.310000000000002,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "2",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "3",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "signals": [
+        {
+          "id": "369",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 0.25666880030034184,
+          "orientation": "opposite"
+        }
+      ],
+      "initial_heading": 0,
+      "final_heading": 0,
+      "is_junction": "110"
+    },
+    "118": {
+      "id": "118",
+      "length": 23.310000000000002,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "2",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "3",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "2",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "3",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "2",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "3",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1419185634019318,
+      "final_heading": 3.1419185634019318,
+      "is_junction": "110"
+    },
+    "123": {
+      "id": "123",
+      "length": 13.506069853667587,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "2",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "21",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "2",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "21",
+              "lane_id": "2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1419185634019318,
+      "final_heading": 4.712540993073281,
+      "is_junction": "110"
+    },
+    "128": {
+      "id": "128",
+      "length": 20.63776242493703,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "2",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "21",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1419185634019318,
+      "final_heading": 4.712540993073281,
+      "is_junction": "110"
+    },
+    "131": {
+      "id": "131",
+      "length": 20.033463917066044,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "2",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "21",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.5709483394834862,
+      "final_heading": 0,
+      "is_junction": "110"
+    },
+    "133": {
+      "id": "133",
+      "length": 12.181057861893299,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "3",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "21",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "3",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "21",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0.0003259098121386472,
+      "final_heading": 4.712540993073281,
+      "is_junction": "110"
+    },
+    "139": {
+      "id": "139",
+      "length": 19.0662399401575,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "3",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "21",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 4.712540993073281,
+      "is_junction": "110"
+    },
+    "141": {
+      "id": "141",
+      "length": 19.056577814055565,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "21",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "3",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.570948339483488,
+      "final_heading": 3.1419185634019318,
+      "is_junction": "110"
+    },
+    "144": {
+      "id": "144",
+      "length": 18.26090687528938,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "19",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "7",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.141592653589793,
+      "final_heading": 1.5701923158347464,
+      "is_junction": "143"
+    },
+    "145": {
+      "id": "145",
+      "length": 11.948762486601144,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "7",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "19",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "7",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "19",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.141592653589793,
+      "final_heading": 1.5701923158347428,
+      "is_junction": "143"
+    },
+    "150": {
+      "id": "150",
+      "length": 18.36482355632952,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "19",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "7",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711784969424531,
+      "final_heading": 0,
+      "is_junction": "143"
+    },
+    "157": {
+      "id": "157",
+      "length": 22.010000000000048,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "6",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "7",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "6",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "7",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "6",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "7",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 0,
+      "is_junction": "143"
+    },
+    "158": {
+      "id": "158",
+      "length": 22.010000000000048,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "6",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "7",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.141592653589793,
+      "final_heading": 3.141592653589793,
+      "is_junction": "143"
+    },
+    "163": {
+      "id": "163",
+      "length": 18.641437175495312,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "6",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "19",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 1.5701923158347295,
+      "is_junction": "143"
+    },
+    "165": {
+      "id": "165",
+      "length": 11.92458742262148,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "19",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "6",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "19",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "6",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711784969424536,
+      "final_heading": 3.141592653589793,
+      "is_junction": "143"
+    },
+    "169": {
+      "id": "169",
+      "length": 18.4289223452356,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "19",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "6",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711784969424536,
+      "final_heading": 3.141592653589793,
+      "is_junction": "143"
+    },
+    "178": {
+      "id": "178",
+      "length": 22.000000000000007,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "21",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "22",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "21",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "22",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "21",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "22",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073281,
+      "final_heading": 4.712540993073281,
+      "is_junction": "171"
+    },
+    "179": {
+      "id": "179",
+      "length": 22.000000000000007,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "21",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "22",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.570948339483488,
+      "final_heading": 1.570948339483488,
+      "is_junction": "171"
+    },
+    "183": {
+      "id": "183",
+      "length": 18.57671187206472,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "22",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "9",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.5709483394834898,
+      "final_heading": 0,
+      "is_junction": "171"
+    },
+    "184": {
+      "id": "184",
+      "length": 18.10021760535343,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "9",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "22",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1417145063749725,
+      "final_heading": 4.712540993073283,
+      "is_junction": "171"
+    },
+    "185": {
+      "id": "185",
+      "length": 11.580840355604678,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "22",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "9",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "22",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "9",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.570948339483488,
+      "final_heading": 0.00012185278518095366,
+      "is_junction": "171"
+    },
+    "188": {
+      "id": "188",
+      "length": 18.81795418162054,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "21",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "9",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073279,
+      "final_heading": 0,
+      "is_junction": "171"
+    },
+    "189": {
+      "id": "189",
+      "length": 12.08042698002438,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "21",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "9",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "21",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "9",
+              "lane_id": "2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073281,
+      "final_heading": 0.00012185278518095366,
+      "is_junction": "171"
+    },
+    "193": {
+      "id": "193",
+      "length": 18.648387708057673,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "21",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "9",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.1417145063749743,
+      "final_heading": 1.570948339483487,
+      "is_junction": "171"
+    },
+    "195": {
+      "id": "195",
+      "length": 19.640860559325652,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "12",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "19",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.5701923158347428,
+      "final_heading": 3.1415113941303794,
+      "is_junction": "194"
+    },
+    "197": {
+      "id": "197",
+      "length": 13.05510289455858,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "12",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "19",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "12",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "19",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 6.283104047720172,
+      "final_heading": 4.711784969424536,
+      "is_junction": "194"
+    },
+    "201": {
+      "id": "201",
+      "length": 19.561647864224348,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "12",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "19",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 4.711784969424536,
+      "is_junction": "194"
+    },
+    "203": {
+      "id": "203",
+      "length": 12.278980404611012,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "12",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "18",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "12",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "18",
+              "lane_id": "-2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 6.283104047720172,
+      "final_heading": 1.5701923158347428,
+      "is_junction": "194"
+    },
+    "208": {
+      "id": "208",
+      "length": 18.837828684260373,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "18",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "12",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.71178496942453,
+      "final_heading": 3.1415113941303776,
+      "is_junction": "194"
+    },
+    "209": {
+      "id": "209",
+      "length": 18.757968943276904,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "12",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "18",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 1.570192315834755,
+      "is_junction": "194"
+    },
+    "218": {
+      "id": "218",
+      "length": 23.50999999999999,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "18",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "19",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "signals": [
+        {
+          "id": "380",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 23.50999999999999,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 4.711784969424536,
+      "final_heading": 4.711784969424536,
+      "is_junction": "194"
+    },
+    "219": {
+      "id": "219",
+      "length": 23.50999999999999,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "18",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "19",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "18",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "19",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "18",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "19",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.5701923158347428,
+      "final_heading": 1.5701923158347428,
+      "is_junction": "194"
+    },
+    "223": {
+      "id": "223",
+      "length": 13.0273220203145,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "17",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "10",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "17",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "10",
+              "lane_id": "-2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.5701923158347428,
+      "final_heading": 3.1417145063749743,
+      "is_junction": "222"
+    },
+    "229": {
+      "id": "229",
+      "length": 19.71132258672951,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "10",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "17",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 4.711784969424536,
+      "is_junction": "222"
+    },
+    "232": {
+      "id": "232",
+      "length": 19.499978887843323,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "10",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "17",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.5701923158347428,
+      "final_heading": 3.1417145063749743,
+      "is_junction": "222"
+    },
+    "243": {
+      "id": "243",
+      "length": 22.609999999999992,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "16",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "17",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711784969424536,
+      "final_heading": 4.711784969424536,
+      "is_junction": "222"
+    },
+    "244": {
+      "id": "244",
+      "length": 22.609999999999992,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "16",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "17",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "16",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "17",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "16",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "17",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.5701923158347428,
+      "final_heading": 1.5701923158347428,
+      "is_junction": "222"
+    },
+    "247": {
+      "id": "247",
+      "length": 18.565919522748796,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "10",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "16",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 1.5701923158347306,
+      "is_junction": "222"
+    },
+    "248": {
+      "id": "248",
+      "length": 12.494548464232244,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "10",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "16",
+              "lane_id": "-3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "10",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "16",
+              "lane_id": "-2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0.00012185278518095366,
+      "final_heading": 1.5701923158347428,
+      "is_junction": "222"
+    },
+    "253": {
+      "id": "253",
+      "length": 18.904744347865794,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "16",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "10",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711784969424526,
+      "final_heading": 3.1417145063749743,
+      "is_junction": "222"
+    },
+    "256": {
+      "id": "256",
+      "length": 18.567458663401325,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "24",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "12",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.5709483394834907,
+      "final_heading": 0,
+      "is_junction": "255"
+    },
+    "257": {
+      "id": "257",
+      "length": 18.297645810836766,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "12",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "24",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1415113941303794,
+      "final_heading": 4.7125409930732785,
+      "is_junction": "255"
+    },
+    "258": {
+      "id": "258",
+      "length": 11.976274389464642,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "24",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "12",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "24",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "12",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.570948339483488,
+      "final_heading": 6.283104047720172,
+      "is_junction": "255"
+    },
+    "271": {
+      "id": "271",
+      "length": 21.999999999999943,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "23",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "24",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "23",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "24",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "23",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "24",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073281,
+      "final_heading": 4.712540993073281,
+      "is_junction": "255"
+    },
+    "272": {
+      "id": "272",
+      "length": 21.999999999999943,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "23",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "24",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.570948339483488,
+      "final_heading": 1.570948339483488,
+      "is_junction": "255"
+    },
+    "273": {
+      "id": "273",
+      "length": 18.391981040939967,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "23",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "12",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.141511394130383,
+      "final_heading": 1.570948339483487,
+      "is_junction": "255"
+    },
+    "274": {
+      "id": "274",
+      "length": 11.69960499272827,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "12",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "23",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "12",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "23",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.1415113941303785,
+      "final_heading": 1.570948339483488,
+      "is_junction": "255"
+    },
+    "277": {
+      "id": "277",
+      "length": 18.394137372051183,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "23",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "12",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073282,
+      "final_heading": 0,
+      "is_junction": "255"
+    },
+    "279": {
+      "id": "279",
+      "length": 18.35749118256433,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "17",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "4",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711784969424541,
+      "final_heading": 3.141145859908246,
+      "is_junction": "278"
+    },
+    "280": {
+      "id": "280",
+      "length": 11.905410644069011,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "17",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "4",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "17",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "4",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711784969424536,
+      "final_heading": 3.141145859908252,
+      "is_junction": "278"
+    },
+    "284": {
+      "id": "284",
+      "length": 18.435759911439373,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "4",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "17",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 1.5701923158347348,
+      "is_junction": "278"
+    },
+    "295": {
+      "id": "295",
+      "length": 23.08999999999999,
+      "lanes": {
+        "3": {
+          "id": "3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "17",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "18",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "17",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "18",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "17",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "18",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "signals": [
+        {
+          "id": "388",
+          "type": "1000001",
+          "name": "Signal_3Light_Post01",
+          "position": 23.08999999999997,
+          "orientation": "along"
+        }
+      ],
+      "initial_heading": 1.5701923158347428,
+      "final_heading": 1.5701923158347428,
+      "is_junction": "278"
+    },
+    "296": {
+      "id": "296",
+      "length": 23.08999999999999,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "17",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "18",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711784969424536,
+      "final_heading": 4.711784969424536,
+      "is_junction": "278"
+    },
+    "297": {
+      "id": "297",
+      "length": 13.089128746532172,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "4",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "18",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "4",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "18",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 6.282738513498045,
+      "final_heading": 4.711784969424536,
+      "is_junction": "278"
+    },
+    "302": {
+      "id": "302",
+      "length": 19.604915567355313,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "4",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "18",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 4.711784969424536,
+      "is_junction": "278"
+    },
+    "304": {
+      "id": "304",
+      "length": 19.491634566012134,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "4",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "18",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.5701923158347428,
+      "final_heading": 3.1411458599082565,
+      "is_junction": "278"
+    },
+    "307": {
+      "id": "307",
+      "length": 12.273273536959353,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "4",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "22",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "4",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "22",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.141145859908252,
+      "final_heading": 1.570948339483488,
+      "is_junction": "306"
+    },
+    "312": {
+      "id": "312",
+      "length": 18.966795337408087,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "22",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "4",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.1411458599082547,
+      "final_heading": 1.5709483394834898,
+      "is_junction": "306"
+    },
+    "313": {
+      "id": "313",
+      "length": 18.73775846902681,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "22",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "4",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073285,
+      "final_heading": 0,
+      "is_junction": "306"
+    },
+    "314": {
+      "id": "314",
+      "length": 11.447333694823318,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "4",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "23",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "4",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "23",
+              "lane_id": "2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.141145859908252,
+      "final_heading": 4.712540993073281,
+      "is_junction": "306"
+    },
+    "318": {
+      "id": "318",
+      "length": 18.23787953949942,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "4",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "23",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 3.141145859908251,
+      "final_heading": 4.712540993073283,
+      "is_junction": "306"
+    },
+    "319": {
+      "id": "319",
+      "length": 18.12939718191051,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "23",
+              "lane_id": "1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "4",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 1.5709483394834898,
+      "final_heading": 0,
+      "is_junction": "306"
+    },
+    "330": {
+      "id": "330",
+      "length": 21.999999999999986,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "22",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "23",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 1.570948339483488,
+      "final_heading": 1.570948339483488,
+      "is_junction": "306"
+    },
+    "331": {
+      "id": "331",
+      "length": 21.999999999999986,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "22",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "23",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "22",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "23",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "22",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "23",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.712540993073281,
+      "final_heading": 4.712540993073281,
+      "is_junction": "306"
+    },
+    "333": {
+      "id": "333",
+      "length": 18.793921099481064,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "25",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "9",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711174208735286,
+      "final_heading": 3.1417145063749725,
+      "is_junction": "332"
+    },
+    "334": {
+      "id": "334",
+      "length": 18.826108123130147,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "9",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "25",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 1.569581555145497,
+      "is_junction": "332"
+    },
+    "335": {
+      "id": "335",
+      "length": 12.050712932173134,
+      "lanes": {
+        "2": {
+          "id": "2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "25",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "9",
+              "lane_id": "2"
+            }
+          ]
+        },
+        "1": {
+          "id": "1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "left",
+          "connections": [
+            {
+              "road_id": "25",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "9",
+              "lane_id": "3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711174208735285,
+      "final_heading": 3.1417145063749743,
+      "is_junction": "332"
+    },
+    "339": {
+      "id": "339",
+      "length": 18.686957461442805,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "25",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "10",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711174208735287,
+      "final_heading": 0,
+      "is_junction": "332"
+    },
+    "341": {
+      "id": "341",
+      "length": 18.772711649417232,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "25",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "10",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.141714506374976,
+      "final_heading": 1.569581555145489,
+      "is_junction": "332"
+    },
+    "343": {
+      "id": "343",
+      "length": 12.189035342643304,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "25",
+              "lane_id": "3"
+            },
+            {
+              "road_id": "10",
+              "lane_id": "3"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "25",
+              "lane_id": "2"
+            },
+            {
+              "road_id": "10",
+              "lane_id": "2"
+            }
+          ]
+        }
+      },
+      "initial_heading": 4.711174208735285,
+      "final_heading": 0.00012185278518095366,
+      "is_junction": "332"
+    },
+    "354": {
+      "id": "354",
+      "length": 22.18,
+      "lanes": {
+        "1": {
+          "id": "1",
+          "type": "driving",
+          "travel_direction": "backward",
+          "side": "left",
+          "predecessors": [
+            {
+              "road_id": "9",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "10",
+              "lane_id": "1"
+            }
+          ],
+          "successors": []
+        }
+      },
+      "initial_heading": 3.1417145063749743,
+      "final_heading": 3.1417145063749743,
+      "is_junction": "332"
+    },
+    "355": {
+      "id": "355",
+      "length": 22.18,
+      "lanes": {
+        "-1": {
+          "id": "-1",
+          "type": "driving",
+          "travel_direction": "forward",
+          "side": "right",
+          "predecessors": [
+            {
+              "road_id": "9",
+              "lane_id": "-1"
+            }
+          ],
+          "successors": [
+            {
+              "road_id": "10",
+              "lane_id": "-1",
+              "direction": "straight"
+            }
+          ]
+        },
+        "-2": {
+          "id": "-2",
+          "type": "shoulder",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "9",
+              "lane_id": "-2"
+            },
+            {
+              "road_id": "10",
+              "lane_id": "-2"
+            }
+          ]
+        },
+        "-3": {
+          "id": "-3",
+          "type": "sidewalk",
+          "travel_direction": "undirected",
+          "side": "right",
+          "connections": [
+            {
+              "road_id": "9",
+              "lane_id": "-3"
+            },
+            {
+              "road_id": "10",
+              "lane_id": "-3"
+            }
+          ]
+        }
+      },
+      "initial_heading": 0,
+      "final_heading": 0,
+      "is_junction": "332"
+    }
+  },
+  "junctions": {}
+}

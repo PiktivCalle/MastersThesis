@@ -101,6 +101,25 @@ class RoadCreation:
         except Exception as e:
             print(f"Adding preceding lane relationship raised an error: \n{e}\n")
 
+    def addUndirectedConnectionRelationship(self, connectionData_):
+        query = """
+            UNWIND COALESCE($data, []) AS entry
+            MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane), (r2)-[:HAS_LANE]->(l2:Lane)
+            WHERE r1.id = entry.roadId AND r2.id = entry.conRoadId AND l1.id = entry.laneId AND l2.id = entry.conLaneId
+            CREATE (l1)-[:CONNECTS_TO]->(l2)
+        """
+        
+        try:
+            self.driver.execute_query(
+                query,
+                data=connectionData_,
+                database_= self.database
+            )
+        except exceptions.Neo4jError as e:
+            print(f"Adding preceding lane relationship raised an error: \n{e}\n")
+        except Exception as e:
+            print(f"Adding preceding lane relationship raised an error: \n{e}\n")
+
     def __del__(self):
         self.driver.close()
 
@@ -111,6 +130,7 @@ def insertGraphIntoDB(mapDict):
     roadData = []
     laneData = []
     precedingLaneData = []
+    undirectedLaneData = []
     signalData = []
     objectData = []
     for _, road in mapDict["roads"].items():
@@ -122,28 +142,38 @@ def insertGraphIntoDB(mapDict):
             "is_junction": road["is_junction"]
         })
 
-        for lane_side in road["lanes"]:
-            for lane in road["lanes"][lane_side]:
-                laneData.append({
-                    "id": lane["id"],
-                    "type": lane["type"],
-                    "roadId": road["id"],
-                    "travel_direction": lane["travel_direction"],
-                    "side": lane_side
-                })
+        for _, lane in road["lanes"].items():
+            laneData.append({
+                "id": lane["id"],
+                "type": lane["type"],
+                "roadId": road["id"],
+                "travel_direction": lane["travel_direction"],
+                "side": lane["side"]
+            })
         
-        for lane_side in road["lanes"]:
-            for lane in road["lanes"][lane_side]:
+        for _, lane in road["lanes"].items():
+            if lane["type"] == "driving":
                 for successor in lane["successors"]:
                     precedingLaneData.append(
                         {
                             "roadId": road["id"],
-                            "succeedingRoadId": successor["successor_road_id"], 
+                            "succeedingRoadId": successor["road_id"], 
                             "laneId": lane["id"], 
-                            "succeedingLaneId": successor["successor_lane_id"], 
+                            "succeedingLaneId": successor["lane_id"], 
                             "direction": successor["direction"]
                         }
                     )
+            else:
+                for con in lane["connections"]:
+                    data = {
+                        "roadId": road["id"],
+                        "conRoadId": con["road_id"],
+                        "laneId": lane["id"],
+                        "conLaneId": con["lane_id"]
+                    }
+
+                    if data not in undirectedLaneData:
+                        undirectedLaneData.append(data)
 
         if "signals" in road:
             for signal in road["signals"]:
@@ -172,3 +202,4 @@ def insertGraphIntoDB(mapDict):
     rc.createSignals(signalData)
     rc.createObjects(objectData)
     rc.addLanePrecedesRelationships(precedingLaneData)
+    rc.addUndirectedConnectionRelationship(undirectedLaneData)

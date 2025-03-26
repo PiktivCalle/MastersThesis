@@ -91,25 +91,38 @@ class QueryGenerator:
             )
     
     def generateAndExecuteCypherQuery(self, user_query: str, few_shot_examples: list[dict]):
-        single_shot_template = PromptTemplate(
-            input_variables=["prompt", "query"],
-            template="USER: {prompt}\nCypher: {query}"
-        )
+        def generate_query(prompt):
+            single_shot_template = PromptTemplate(
+                input_variables=["prompt", "query"],
+                template="USER: {prompt}\nCypher: {query}"
+            )
 
-        few_shot_template = FewShotPromptTemplate(
-            examples=few_shot_examples,
-            example_prompt=single_shot_template,
-            suffix="USER: {question}\nCypher: ",
-            input_variables=["question"],
-            prefix=SYSTEM_MESSAGE
-        )
+            few_shot_template = FewShotPromptTemplate(
+                examples=few_shot_examples,
+                example_prompt=single_shot_template,
+                suffix="USER: {question}\nCypher: ",
+                input_variables=["question"],
+                prefix=SYSTEM_MESSAGE
+            )
 
-        try:
             chain = GraphCypherQAChain.from_llm(
                 llm=self.llm, graph=self.roadGraph, allow_dangerous_requests=True,
                 cypher_prompt=few_shot_template, return_intermediate_steps=True
             )
+            
+            return chain.invoke(prompt)
 
-            return chain.invoke(user_query)
+        try:
+            return generate_query(user_query)
         except Exception as e:
-            print(f"GraphCypherQAChain failed: {e}")
+            error_message = str(e)
+            print(f"GraphCypherQAChain failed: {error_message}")
+
+            # Modify the query to provide feedback
+            retry_query = f"{user_query}\n(Note: The previous attempt failed due to error: '{error_message}'. Please adjust the query to avoid this issue.)"
+
+            try:
+                return generate_query(retry_query)
+            except Exception as e:
+                print(f"Second attempt failed: {e}")
+                return {"error": str(e), "query_attempted": retry_query}

@@ -17,19 +17,21 @@ def main():
     vc = VectorStore("openAi")
     qg = QueryGenerator(chat_model="gpt-4o-mini")
 
-    user_query = "How many lanes are there in the map?"
-
+    user_query = "How many roads are there?"
+    
     examples = vc.retrieveExamples(user_query)
-    """result = qg.generateAndExecuteCypherQuery(user_query, few_shot_examples=examples)
+    print(examples)
+    result = qg.generateAndExecuteCypherQuery(user_query, few_shot_examples=examples)
+
     printQueryAndResult(result)
     
     if REFLECTION:
-        choice = input("[yellow]Do you want to add this new memory item to update memory module? (Y/N): ").strip().upper()
+        choice = input("Do you want to add this new memory item to update memory module? (Y/N):").strip().upper()
         
         if choice == 'Y':
             vc.addExampleToMemory(prompt=result['query'], query=result['intermediate_steps'][0]['query'])
         else:
-            print("[blue]Ignore this new memory item[/blue]")
-"""
+            print("[blue]Ignore this new memory item[/blue]\n")
+
 if __name__ == '__main__':
     main()

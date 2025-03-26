@@ -24,8 +24,7 @@ class VectorStore:
             persist_directory=database_path
         )
 
-        if len(self.query_memory._collection.get(include=['embeddings'])['embeddings']) == 0:
-            self.addInitialExamplesToMemory()
+        self.addInitialExamplesToMemory()
 
         self.combineDifferentEmbeddingModelMemoryItems()
 
@@ -48,13 +47,21 @@ class VectorStore:
     def addInitialExamplesToMemory(self):
         with open("QueryMemory/initialExamples.json", 'r') as f:
             initial_few_shot_examples = json.load(f)
+
+        current_documents = self.query_memory._collection.get(
+            include=['metadatas']
+        )
         
         prompts = []
-        queries = []
+        metadatas = []
         for example in initial_few_shot_examples["few_shot_examples"]:
-            prompts.append(example["prompt"])
-            queries.append({"prompt": example["prompt"], "query": example["query"]})
-        self.query_memory.add_texts(texts=prompts, metadatas=queries)
+            metadata = {"prompt": example["prompt"], "query": example["query"]}
+            if metadata not in current_documents["metadatas"]:
+                prompts.append(example["prompt"])
+                metadatas.append(metadata)
+
+        if( len(prompts) > 0 ):
+            self.query_memory.add_texts(texts=prompts, metadatas=metadatas)
 
     def combineDifferentEmbeddingModelMemoryItems(self):
         other_embedding_model = "openAi" if self.embedding_model == "ollama" else "ollama"
@@ -91,7 +98,6 @@ class VectorStore:
         fewshot_results = []
         for idx in range(0, len(similarity_results)):
             if similarity_results[idx][-1] > maximum_accepted_similarity_score: continue
-
             fewshot_results.append(similarity_results[idx][0].metadata)
             
         return fewshot_results

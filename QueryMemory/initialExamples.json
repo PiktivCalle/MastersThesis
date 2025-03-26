@@ -15,6 +15,18 @@
         {
             "prompt": "Which roads can turn left?",
             "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane) WHERE (l1)-[:PRECEDES {direction:'left'}]->() RETURN DISTINCT r.id as roadId"
+        },
+        {
+            "prompt": "How many driving lanes are there?",
+            "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane {type:'driving'}) RETURN COUNT(l1) as number_driving_lanes"
+        },
+        {
+            "prompt": "How many roads have driving lanes in each direction?",
+            "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane {type:'driving', travelDirection:'forward'}) MATCH (r)-[:HAS_LANE]->(l2:Lane {type:'driving', travelDirection:'backward'}) RETURN COUNT(r) as roads_both_driving_direction"
+        },
+        {
+            "prompt": "How many three-way driving intersections are there?",
+            "query": ""
         }
     ]
 }
