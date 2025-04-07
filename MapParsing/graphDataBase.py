@@ -29,8 +29,8 @@ class RoadCreation:
         query = """
             UNWIND COALESCE($data, []) AS entry
             MATCH (r:Road) WHERE r.id = entry.roadId
-            CREATE ( l:Lane {id: entry.id, lane_type: entry.type, travelDirection: entry.travel_direction} )
-            CREATE (r)-[:HAS_LANE {side: entry.side}]->(l)
+            CREATE ( l:Lane {id: entry.id, lane_type: entry.type} )
+            CREATE (r)-[:HAS_LANE]->(l)
         """
 
         try:
