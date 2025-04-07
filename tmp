@@ -47,6 +47,14 @@
               "lane_id": "1"
             },
             {
+              "road_id": "41",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "52",
+              "lane_id": "1"
+            },
+            {
               "road_id": "52",
               "lane_id": "1"
             }
@@ -182,6 +190,14 @@
           "predecessors": [
             {
               "road_id": "61",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "61",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "75",
               "lane_id": "1"
             },
             {
@@ -340,6 +356,14 @@
           "predecessors": [
             {
               "road_id": "117",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "117",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "131",
               "lane_id": "1"
             },
             {
@@ -620,6 +644,10 @@
             {
               "road_id": "304",
               "lane_id": "1"
+            },
+            {
+              "road_id": "304",
+              "lane_id": "1"
             }
           ],
           "successors": [
@@ -762,6 +790,10 @@
           "travel_direction": "backward",
           "side": "left",
           "predecessors": [
+            {
+              "road_id": "93",
+              "lane_id": "1"
+            },
             {
               "road_id": "93",
               "lane_id": "1"
@@ -914,6 +946,10 @@
           "travel_direction": "backward",
           "side": "left",
           "predecessors": [
+            {
+              "road_id": "158",
+              "lane_id": "1"
+            },
             {
               "road_id": "158",
               "lane_id": "1"
@@ -1380,6 +1416,10 @@
             {
               "road_id": "354",
               "lane_id": "1"
+            },
+            {
+              "road_id": "354",
+              "lane_id": "1"
             }
           ],
           "successors": [
@@ -1522,6 +1562,10 @@
           "travel_direction": "backward",
           "side": "left",
           "predecessors": [
+            {
+              "road_id": "232",
+              "lane_id": "1"
+            },
             {
               "road_id": "232",
               "lane_id": "1"
@@ -1778,6 +1822,10 @@
           "travel_direction": "backward",
           "side": "left",
           "predecessors": [
+            {
+              "road_id": "195",
+              "lane_id": "1"
+            },
             {
               "road_id": "195",
               "lane_id": "1"
@@ -2295,6 +2343,10 @@
               "lane_id": "1"
             },
             {
+              "road_id": "244",
+              "lane_id": "1"
+            },
+            {
               "road_id": "247",
               "lane_id": "-1"
             }
@@ -2442,6 +2494,10 @@
             {
               "road_id": "284",
               "lane_id": "-1"
+            },
+            {
+              "road_id": "295",
+              "lane_id": "1"
             },
             {
               "road_id": "295",
@@ -2600,6 +2656,10 @@
             {
               "road_id": "219",
               "lane_id": "1"
+            },
+            {
+              "road_id": "219",
+              "lane_id": "1"
             }
           ],
           "successors": [
@@ -2731,6 +2791,10 @@
           "travel_direction": "backward",
           "side": "left",
           "predecessors": [
+            {
+              "road_id": "144",
+              "lane_id": "1"
+            },
             {
               "road_id": "144",
               "lane_id": "1"
@@ -2985,6 +3049,14 @@
               "lane_id": "1"
             },
             {
+              "road_id": "179",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "193",
+              "lane_id": "1"
+            },
+            {
               "road_id": "193",
               "lane_id": "1"
             }
@@ -3131,6 +3203,14 @@
           "predecessors": [
             {
               "road_id": "312",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "312",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "330",
               "lane_id": "1"
             },
             {
@@ -3292,6 +3372,14 @@
               "lane_id": "1"
             },
             {
+              "road_id": "272",
+              "lane_id": "1"
+            },
+            {
+              "road_id": "273",
+              "lane_id": "1"
+            },
+            {
               "road_id": "273",
               "lane_id": "1"
             }
@@ -3443,6 +3531,10 @@
             {
               "road_id": "108",
               "lane_id": "1"
+            },
+            {
+              "road_id": "108",
+              "lane_id": "1"
             }
           ],
           "successors": [
@@ -3588,6 +3680,10 @@
             {
               "road_id": "334",
               "lane_id": "-1"
+            },
+            {
+              "road_id": "341",
+              "lane_id": "1"
             },
             {
               "road_id": "341",
@@ -3860,15 +3956,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "0",
-              "lane_id": "1"
-            },
-            {
               "road_id": "1",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "0",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 0,
@@ -3955,15 +4053,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "0",
-              "lane_id": "1"
-            },
-            {
               "road_id": "16",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "0",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.5701923158347357,
@@ -3981,15 +4081,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "1",
-              "lane_id": "1"
-            },
-            {
               "road_id": "2",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "1",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "signals": [
@@ -4145,15 +4247,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "1",
-              "lane_id": "1"
-            },
-            {
               "road_id": "25",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "1",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.5695815551454926,
@@ -4268,15 +4372,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "5",
-              "lane_id": "1"
-            },
-            {
               "road_id": "6",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "5",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.1410569536073982,
@@ -4492,15 +4598,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "24",
-              "lane_id": "1"
-            },
-            {
               "road_id": "6",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "24",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.1410569536074995,
@@ -4546,15 +4654,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "2",
-              "lane_id": "1"
-            },
-            {
               "road_id": "3",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "2",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "signals": [
@@ -4710,15 +4820,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "2",
-              "lane_id": "1"
-            },
-            {
               "road_id": "21",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "2",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.5709483394834862,
@@ -4833,15 +4945,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "19",
-              "lane_id": "1"
-            },
-            {
               "road_id": "7",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "19",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.141592653589793,
@@ -4988,15 +5102,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "6",
-              "lane_id": "1"
-            },
-            {
               "road_id": "7",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "6",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.141592653589793,
@@ -5171,15 +5287,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "21",
-              "lane_id": "1"
-            },
-            {
               "road_id": "22",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "21",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.570948339483488,
@@ -5363,15 +5481,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "21",
-              "lane_id": "1"
-            },
-            {
               "road_id": "9",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "21",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.1417145063749743,
@@ -5389,15 +5509,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "12",
-              "lane_id": "1"
-            },
-            {
               "road_id": "19",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "12",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.5701923158347428,
@@ -5650,15 +5772,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "18",
-              "lane_id": "1"
-            },
-            {
               "road_id": "19",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "18",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.5701923158347428,
@@ -5745,15 +5869,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "10",
-              "lane_id": "1"
-            },
-            {
               "road_id": "17",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "10",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.5701923158347428,
@@ -5831,15 +5957,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "16",
-              "lane_id": "1"
-            },
-            {
               "road_id": "17",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "16",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.5701923158347428,
@@ -6111,15 +6239,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "23",
-              "lane_id": "1"
-            },
-            {
               "road_id": "24",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "23",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.570948339483488,
@@ -6137,15 +6267,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "23",
-              "lane_id": "1"
-            },
-            {
               "road_id": "12",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "23",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.141511394130383,
@@ -6361,15 +6493,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "17",
-              "lane_id": "1"
-            },
-            {
               "road_id": "18",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "17",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "signals": [
@@ -6493,15 +6627,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "4",
-              "lane_id": "1"
-            },
-            {
               "road_id": "18",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "4",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.5701923158347428,
@@ -6560,15 +6696,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "22",
-              "lane_id": "1"
-            },
-            {
               "road_id": "4",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "22",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.1411458599082547,
@@ -6711,15 +6849,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "22",
-              "lane_id": "1"
-            },
-            {
               "road_id": "23",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "22",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 1.570948339483488,
@@ -6922,15 +7062,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "25",
-              "lane_id": "1"
-            },
-            {
               "road_id": "10",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "25",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.141714506374976,
@@ -6989,15 +7131,17 @@
           "side": "left",
           "predecessors": [
             {
-              "road_id": "9",
-              "lane_id": "1"
-            },
-            {
               "road_id": "10",
               "lane_id": "1"
             }
           ],
-          "successors": []
+          "successors": [
+            {
+              "road_id": "9",
+              "lane_id": "1",
+              "direction": "straight"
+            }
+          ]
         }
       },
       "initial_heading": 3.1417145063749743,

@@ -29,7 +29,7 @@ class RoadCreation:
         query = """
             UNWIND COALESCE($data, []) AS entry
             MATCH (r:Road) WHERE r.id = entry.roadId
-            CREATE ( l:Lane {id: entry.id, type: entry.type, travelDirection: entry.travel_direction} )
+            CREATE ( l:Lane {id: entry.id, lane_type: entry.type, travelDirection: entry.travel_direction} )
             CREATE (r)-[:HAS_LANE {side: entry.side}]->(l)
         """
 
@@ -48,7 +48,7 @@ class RoadCreation:
         query = """
             UNWIND COALESCE($data, []) AS entry
             MATCH (r:Road) WHERE r.id = entry.roadId
-            CREATE (s:Signal {id: entry.id, type: entry.type, orientation: entry.orientation, name: entry.name} )
+            CREATE (s:Signal {id: entry.id, signal_type: entry.type, orientation: entry.orientation, name: entry.name} )
             CREATE (r)-[:HAS_SIGNAL {atDistance: entry.distance}]->(s)
         """
         
@@ -67,7 +67,7 @@ class RoadCreation:
         query = """
             UNWIND COALESCE($data, []) AS entry
             MATCH (r:Road) WHERE r.id = entry.roadId
-            CREATE (o:Object {id: entry.id, type: entry.type, orientation: entry.orientation, name: entry.name} )
+            CREATE (o:Object {id: entry.id, object_type: entry.type, orientation: entry.orientation, name: entry.name} )
             CREATE (r)-[:HAS_OBJECT {atDistance: entry.distance}]->(o)
         """
         
@@ -104,7 +104,7 @@ class RoadCreation:
     def addUndirectedConnectionRelationship(self, connectionData_):
         query = """
             UNWIND COALESCE($data, []) AS entry
-            MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane), (r2)-[:HAS_LANE]->(l2:Lane)
+            MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane), (r2:Road)-[:HAS_LANE]->(l2:Lane)
             WHERE r1.id = entry.roadId AND r2.id = entry.conRoadId AND l1.id = entry.laneId AND l2.id = entry.conLaneId
             CREATE (l1)-[:CONNECTS_TO]->(l2)
         """

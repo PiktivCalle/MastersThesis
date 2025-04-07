@@ -164,6 +164,8 @@ def create_graph(file_name):
                 from_lane_id = lane_link.get("from")
 
                 dir_none = {"direction": None}
+                dir_straight = {"direction": "straight"}
+
                 con = {
                     "road_id": connecting_road_id, 
                     "lane_id": to_lane_id
@@ -224,24 +226,23 @@ def create_graph(file_name):
                 # Add connecting road as predecessor to the road to come
                 if con not in parsed_data["roads"][suc["road_id"]]["lanes"][suc["lane_id"]]["predecessors"]:
                     parsed_data["roads"][suc["road_id"]]["lanes"][suc["lane_id"]]["predecessors"].append(con)
- 
-                # Remove incorrect successor to intersection road
-                for idx, val in enumerate(parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["successors"]):
-                    if incoming_road_id == val["road_id"] and from_lane_id == val["lane_id"]:
-                        parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["successors"].pop(idx)
 
-                # Swap incorrect predecessor to successor
-                for idx, val in enumerate(parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["predecessors"]):
-                    if incoming_road_id != val["road_id"] and from_lane_id != val["lane_id"]:
-                        ret = parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["predecessors"].pop(idx)
-                        parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["successors"].append({
-                            "road_id": ret["road_id"], 
-                            "lane_id": ret["lane_id"], 
-                            "direction": "straight"
-                        })
+                if inc | dir_straight in parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["successors"]:
+                    idx = parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["successors"].index(inc | dir_straight)
+                    parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["successors"].pop(idx)
 
-                        # Add reverse relationship
-                        parsed_data["roads"][ret["road_id"]]["lanes"][ret["lane_id"]]["predecessors"].append(con)
+                if suc in parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["predecessors"]:
+                    idx = parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["predecessors"].index(suc)
+
+                    ret = parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["predecessors"].pop(idx)
+                    parsed_data["roads"][connecting_road_id]["lanes"][to_lane_id]["successors"].append({
+                        "road_id": ret["road_id"], 
+                        "lane_id": ret["lane_id"], 
+                        "direction": "straight"
+                    })
+
+                    # Add reverse relationship
+                    parsed_data["roads"][ret["road_id"]]["lanes"][ret["lane_id"]]["predecessors"].append(con)
 
     return parsed_data
 

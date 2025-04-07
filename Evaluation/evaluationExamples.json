@@ -1,0 +1,30 @@
+{
+    "languageModels": [
+        {
+            "model": "gpt-4o-mini",
+            "is_open_ai": true
+        }
+    ],
+    "embeddingModels": [
+        {
+            "model": "text-embedding-3-large",
+            "is_open_ai": true
+        }
+    ],
+    "evaluationExamples": [
+        {
+            "prompt": "How many roads are there on the map?",
+            "correctResult": "122",
+            "memoryItems": [
+                {
+                    "prompt": "",
+                    "query": ""
+                },
+                {
+                    "prompt": "",
+                    "query": ""
+                }
+            ]
+        }
+    ]
+}

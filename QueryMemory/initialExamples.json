@@ -6,7 +6,7 @@
         },
         {
             "prompt": "How many roads contain multiple lanes?",
-            "query": "MATCH (r:Road)-[:HAS_LANE]->(l:Lane) WITH r, COUNT(l) AS lane_count WHERE lane_count > 1 RETURN COUNT(r) AS roads_with_multiple_lanes;"
+            "query": "MATCH (r:Road)-[:HAS_LANE]->(l:Lane) WITH r, COUNT(l) AS lane_count WHERE lane_count > 1 RETURN COUNT(r) AS roads_with_multiple_lanes"
         },
         {
             "prompt": "Return the names of the signs",
@@ -18,15 +18,15 @@
         },
         {
             "prompt": "How many driving lanes are there?",
-            "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane {type:'driving'}) RETURN COUNT(l1) as number_driving_lanes"
+            "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane {lane_type:'driving'}) RETURN COUNT(l1) as number_driving_lanes"
         },
         {
             "prompt": "How many roads have driving lanes in each direction?",
-            "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane {type:'driving', travelDirection:'forward'}) MATCH (r)-[:HAS_LANE]->(l2:Lane {type:'driving', travelDirection:'backward'}) RETURN COUNT(r) as roads_both_driving_direction"
+            "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane {lane_type:'driving', travelDirection:'forward'}) MATCH (r)-[:HAS_LANE]->(l2:Lane {lane_type:'driving', travelDirection:'backward'}) RETURN COUNT(r) as roads_both_driving_direction"
         },
         {
-            "prompt": "How many three-way driving intersections are there?",
-            "query": ""
+            "prompt": "Output one driveable lane",
+            "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane {lane_type:'driving'}) return l1 as driveable_lane LIMIT 1"
         }
     ]
 }

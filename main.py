@@ -14,13 +14,13 @@ def printQueryAndResult(result: dict):
     print(f"\nLLM output based on query result:\n[green]{result['result']}[/green]\n")
 
 def main():
-    vc = VectorStore("openAi")
-    qg = QueryGenerator(chat_model="gpt-4o-mini")
+    vc = VectorStore(embedding_model="text-embedding-3-large", is_open_ai=True)
+    qg = QueryGenerator(chat_model="gpt-4o-mini", is_open_ai=True)
 
-    user_query = "How many roads are there?"
+    user_query = "How long would it take me to drive on every unique road if I drive 5mph if the roads are defined in meters?"
     
     examples = vc.retrieveExamples(user_query)
-    print(examples)
+    #print(examples)
     result = qg.generateAndExecuteCypherQuery(user_query, few_shot_examples=examples)
 
     printQueryAndResult(result)
