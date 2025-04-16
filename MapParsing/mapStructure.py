@@ -251,9 +251,9 @@ def determine_turn_possibility(initial_heading, final_heading, epsilon = 1e-4):
     
     if abs(delta_heading) < epsilon:
         return "straight"
-    elif abs(math.sin(delta_heading - math.pi / 2)) < epsilon:
+    elif abs(math.cos(delta_heading - math.pi / 2) - 1) < epsilon:
         return "left"
-    elif abs(math.sin(delta_heading + math.pi / 2)) < epsilon:
+    elif abs(math.cos(delta_heading + math.pi / 2) - 1) < epsilon:
         return "right"
     elif abs(abs(delta_heading) - math.pi) < epsilon:
         return "u-turn"

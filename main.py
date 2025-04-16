@@ -14,10 +14,10 @@ def printQueryAndResult(result: dict):
     print(f"\nLLM output based on query result:\n[green]{result['result']}[/green]\n")
 
 def main():
-    vc = VectorStore(embedding_model="text-embedding-3-large", is_open_ai=True)
-    qg = QueryGenerator(chat_model="gpt-4o-mini", is_open_ai=True)
+    vc = VectorStore(embedding_model="nomic-embed-text", is_open_ai=False)
+    qg = QueryGenerator(chat_model="llama3.2", is_open_ai=False)
 
-    user_query = "How long would it take me to drive on every unique road if I drive 5mph if the roads are defined in meters?"
+    user_query = "How many three way intersections are there on the map?"
     
     examples = vc.retrieveExamples(user_query)
     #print(examples)

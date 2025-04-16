@@ -3,18 +3,101 @@
         {
             "model": "gpt-4o-mini",
             "is_open_ai": true
+        },
+        {
+            "model": "gpt-4o-mini",
+            "is_open_ai": true
+        },
+        {
+            "model": "gpt-4o-mini",
+            "is_open_ai": true
         }
     ],
     "embeddingModels": [
         {
             "model": "text-embedding-3-large",
             "is_open_ai": true
+        },
+        {
+            "model": "all-minilm",
+            "is_open_ai": false
+        },
+        {
+            "model": "mxbai-embed-large",
+            "is_open_ai": false
         }
     ],
     "evaluationExamples": [
         {
-            "prompt": "How many roads are there on the map?",
-            "correctResult": "122",
+            "prompt": "How many three way intersections are there on the map?",
+            "correctResult": "12",
+            "memoryItems": [
+                {
+                    "prompt": "How many intersections are there?",
+                    "query": "MATCH (r:Road) WHERE r.junctionId <> '-1' RETURN COUNT(DISTINCT r.junctionId)"
+                },
+                {
+                    "prompt": "What roads are going in to an intersection? ",
+                    "query": "MATCH(r1:Road)-[HAS_LANE]->(l1:Lane)-[PRECEDES]->(l2:Lane)-[ON_ROAD]->(r2:Road) WHERE r1.junctionId = '-1' AND r2.junctionId <> '-1' RETURN DISTINCT r1.id"
+                }
+            ]
+        },
+        {
+            "prompt": "How many roads are turning but are not part of a junction?",
+            "correctResult": "4",
+            "memoryItems": [
+                {
+                    "prompt": "How many roads are there on the map?",
+                    "query": "MATCH (r: Road) RETURN COUNT(r) as amount_of_roads"
+                },
+                {
+                    "prompt": "Which roads are not part of a junction?",
+                    "query": "MATCH(r1:Road) WHERE r1.junctionId = '-1'  RETURN r1.id"
+                },
+                {
+                    "prompt": "How many roads are turning?",
+                    "query": "MATCH(r1:Road) WHERE (r1.finalHeading - r1.initialHeading) > 0.01  RETURN COUNT(r1.id)"
+                }
+            ]
+        },
+        {
+            "prompt": "Give me roads which are at the most 45m long, connected to an intersection which has a left turn with the connected road being at least 150m long. I want the road id of the both roads, as well as the intersection id.",
+            "correctResult": [
+                {
+                    "inc": 25,
+                    "junc": 332,
+                    "out": 10
+                },
+                {
+                    "inc": 16,
+                    "junc": 26,
+                    "out": 1
+                },
+                {
+                    "inc": 23,
+                    "junc": 255,
+                    "out": 12
+                },
+                {
+                    "inc": 25,
+                    "junc": 278,
+                    "out": 4
+                }
+            ],
+            "memoryItems": [
+                {
+                    "prompt": "How many roads are going straight?",
+                    "query": "MATCH(r1:Road)-[HAS_LANE]->(l1:Lane)-[PRECEDES {direction: 'straight'}]->() RETURN COUNT(DISTINCT r1)"
+                },
+                {
+                    "prompt": "",
+                    "query": ""
+                }
+            ]
+        },
+        {
+            "prompt": "Give me a route which is between 400 and 500 meters long, involves three turns, at least one of them being a left turn. The route should take a minimum of 30 seconds to drive when driving in the speed limit of the road. Return the ids of the roads in the route.",
+            "correctResult": "",
             "memoryItems": [
                 {
                     "prompt": "",

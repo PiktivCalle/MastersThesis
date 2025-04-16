@@ -11,7 +11,7 @@ class RoadCreation:
     def createRoads(self, roadData_):
         query = """
             UNWIND COALESCE($data, []) AS entry
-            CREATE ( :Road {id: entry.id, length: entry.length, initialHeading: entry.initial_heading, finalHeading: entry.final_heading, isJunction: entry.is_junction} )
+            CREATE ( :Road {id: entry.id, length: entry.length, initialHeading: entry.initial_heading, finalHeading: entry.final_heading, junctionId: entry.is_junction} )
         """
         
         try:
@@ -31,6 +31,7 @@ class RoadCreation:
             MATCH (r:Road) WHERE r.id = entry.roadId
             CREATE ( l:Lane {id: entry.id, lane_type: entry.type} )
             CREATE (r)-[:HAS_LANE]->(l)
+            CREATE (l)-[:ON_ROAD]->(r)
         """
 
         try:

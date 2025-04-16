@@ -12,7 +12,7 @@ Always return a correct Cypher query based on the user's question.
 
 ### Neo4j Schema:
 - **Node Labels and Properties:**
-  - `(:Road)`: {{ `length`: FLOAT, `finalHeading`: FLOAT, `initialHeading`: FLOAT, `isJunction`: STRING, `id`: STRING }}
+  - `(:Road)`: {{ `length`: FLOAT, `finalHeading`: FLOAT, `initialHeading`: FLOAT, `junctionId`: STRING ('-1' if not a junction), `id`: STRING }}
   - `(:Lane)`: {{ `travelDirection`: STRING, `lane_type`: STRING, `id`: STRING }}
   - `(:Signal)`: {{ `name`: STRING, `id`: STRING, `orientation`: STRING, `signal_type`: STRING }}
   - `(:Object)`: {{ `object_type`: STRING, `id`: STRING, `orientation`: STRING, `name`: STRING }}
@@ -26,13 +26,14 @@ Always return a correct Cypher query based on the user's question.
 
 ### Query Guidelines:
 - Use correct **property names** and **relationship directions**.
+- Never use a **property name** which is not in the schema
 - Always filter by **node properties** when searching.
 - When using relationships, include their properties when needed.
 """
 
 class QueryGenerator:
     def __init__(self, chat_model: str = "llama3.2-vision:latest", is_open_ai: bool = False):
-        load_dotenv()
+        load_dotenv(override=True)
 
         self.roadGraph = Neo4jGraph(url=os.environ.get("NEO4J_URI"), username=os.environ.get("NEO4J_USER"), password=os.environ.get("NEO4J_PASSWORD"), database="neo4j")
 
@@ -46,7 +47,7 @@ class QueryGenerator:
             self.llm = ChatOpenAI(
                 openai_api_key="ollama",
                 temperature=0,
-                openai_api_base=os.environ.get("OLLAMA_URI"),
+                openai_api_base=os.environ.get("OLLAMA_CHAT_URI"),
                 model=chat_model
             )
     
@@ -60,7 +61,7 @@ class QueryGenerator:
             few_shot_template = FewShotPromptTemplate(
                 examples=few_shot_examples,
                 example_prompt=single_shot_template,
-                suffix="\n\nUSER: {question}\nCypher: ",
+                suffix="\n\n### Current question:\n\nUSER: {question}\nCypher: ",
                 input_variables=["question"],
                 prefix=SYSTEM_MESSAGE + "\n\n### Example Queries:\n\n"
             )

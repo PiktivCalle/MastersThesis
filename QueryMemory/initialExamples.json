@@ -27,6 +27,10 @@
         {
             "prompt": "Output one driveable lane",
             "query": "MATCH (r:Road)-[:HAS_LANE]->(l1:Lane {lane_type:'driving'}) return l1 as driveable_lane LIMIT 1"
+        },
+        {
+            "prompt": "How many intersections are there?",
+            "query": "MATCH (r:Road) WHERE r.junctionId <> '-1' RETURN COUNT(DISTINCT r.junctionId)"
         }
     ]
 }

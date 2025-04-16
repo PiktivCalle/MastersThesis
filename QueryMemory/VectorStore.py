@@ -12,7 +12,7 @@ from langchain_chroma import Chroma
 
 class VectorStore:
     def __init__(self, embedding_model: str, is_open_ai = False, database_folder: str = "QueryMemory/VectorDB", evaluation: bool = False):
-        load_dotenv()
+        load_dotenv(override=True)
 
         self.embedding_model = embedding_model
         self.is_open_ai = is_open_ai
@@ -28,7 +28,7 @@ class VectorStore:
 
         if not evaluation:
             self.addInitialExamplesToMemory()
-            self.combineDifferentEmbeddingModelMemoryItems()
+            #self.combineDifferentEmbeddingModelMemoryItems()
 
         print("\n==========Loaded ",database_path," memory. The database has ", len(
             self.query_memory._collection.get(include=['embeddings'])['embeddings']), " items.==========\n")
@@ -41,7 +41,7 @@ class VectorStore:
         
         return OllamaEmbeddings(
             model=self.embedding_model,
-            base_url=os.environ.get("OLLAMA_URI")
+            base_url=os.environ.get("OLLAMA_EMBEDDING_URI")
         )
 
     def addInitialExamplesToMemory(self):
@@ -98,7 +98,7 @@ class VectorStore:
                 self.query_memory._collection.get(include=['embeddings'])['embeddings']), " items.\n")
 
 
-    def retrieveExamples(self, user_query: str, k: int = 5, maximum_accepted_similarity_score: float = 0.8):
+    def retrieveExamples(self, user_query: str, k: int = 10, maximum_accepted_similarity_score: float = 1.5):
         similarity_results = self.query_memory.similarity_search_with_score(
             query=user_query,
             k=k

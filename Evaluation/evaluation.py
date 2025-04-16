@@ -18,14 +18,21 @@ def runExample(example: dict, qg: QueryGenerator, vs: VectorStore):
 
     printQueryAndResult(res)
 
+    results = []
     for item in example["memoryItems"]:
         if len(item["prompt"]) == 0: continue
 
         vs.addExampleToMemory(item["prompt"], item["query"])
 
         few_shot_examples = vs.retrieveExamples(user_query=prompt)
-        res = qg.generateAndExecuteCypherQuery(user_query=prompt, few_shot_examples=few_shot_examples)
+        
+        try:
+            res = qg.generateAndExecuteCypherQuery(user_query=prompt, few_shot_examples=few_shot_examples)
+            results.append(res)
+        except: 
+            results.append(None)
 
+        
         printQueryAndResult(res)
 
 if __name__ == "__main__":
@@ -36,7 +43,6 @@ if __name__ == "__main__":
         qg = QueryGenerator(chat_model=language_model["model"], is_open_ai=language_model["is_open_ai"])
 
         for embedding_model in evaluation_data["embeddingModels"]:
-            vs = VectorStore(embedding_model=embedding_model["model"], is_open_ai=["is_open_ai"] , database_folder="Evaluation/VectorDB", evaluation=True)
-
-            for example in evaluation_data["evaluationExamples"]:
+            for idx, example in enumerate(evaluation_data["evaluationExamples"]):
+                vs = VectorStore(embedding_model=embedding_model["model"], is_open_ai=embedding_model["is_open_ai"] , database_folder=f"Evaluation/VectorDB/lang_{language_model}/memory_{idx}", evaluation=True)
                 runExample(example=example, qg=qg, vs=vs)
