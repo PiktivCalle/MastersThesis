@@ -1,5 +1,7 @@
 from langchain_neo4j import Neo4jGraph, GraphCypherQAChain
 from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_anthropic import ChatAnthropic
 from langchain.prompts import PromptTemplate, FewShotPromptTemplate
 
 import os
@@ -32,23 +34,42 @@ Always return a correct Cypher query based on the user's question.
 """
 
 class QueryGenerator:
-    def __init__(self, chat_model: str = "llama3.2-vision:latest", is_open_ai: bool = False):
+    def __init__(self, chat_model: str, provider: str, reasoning: bool = True, temperature = 0.0):
         load_dotenv(override=True)
 
         self.roadGraph = Neo4jGraph(url=os.environ.get("NEO4J_URI"), username=os.environ.get("NEO4J_USER"), password=os.environ.get("NEO4J_PASSWORD"), database="neo4j")
 
 
-        if is_open_ai:
-            self.llm = ChatOpenAI(
-                temperature=0,
-                model=chat_model
-            )   
-        else:  
+        if provider == "openAi":
+            kwargs = {
+                "temperature": temperature,
+                "model": chat_model
+            }
+
+            self.llm = ChatOpenAI(**kwargs)
+
+        elif provider == "ollama":  
             self.llm = ChatOpenAI(
                 openai_api_key="ollama",
-                temperature=0,
+                temperature=temperature,
                 openai_api_base=os.environ.get("OLLAMA_CHAT_URI"),
                 model=chat_model
+            )
+
+        elif provider == "anthropic":
+            kwargs = {
+                "temperature": 1,
+                "model": chat_model,
+                "max_tokens": 32768,
+                "thinking": {"type": "enabled", "budget_tokens": 16384}
+            }
+
+            self.llm = ChatAnthropic(**kwargs)
+
+        elif provider == "google":
+            self.llm = ChatGoogleGenerativeAI(
+                model=chat_model,
+                temperature=temperature
             )
     
     def generateAndExecuteCypherQuery(self, user_query: str, few_shot_examples: list[dict] = None):

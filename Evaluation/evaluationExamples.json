@@ -1,30 +1,66 @@
 {
     "languageModels": [
         {
-            "model": "gpt-4o-mini",
-            "is_open_ai": true
+            "model": "llama3.3:70b",
+            "provider": "ollama"
+        },
+        {
+            "model": "aravhawk/llama4",
+            "provider": "ollama"
+        },
+        {
+            "model": "deepseek-r1:8b",
+            "provider": "ollama"
+        },
+        {
+            "model": "deepseek-r1:1.5b",
+            "provider": "ollama"
+        },
+        {
+            "model": "phi4",
+            "provider": "ollama"
+        },
+        {
+            "model": "gemma3:27b",
+            "provider": "ollama"
+        },
+        {
+            "model": "tinyllama",
+            "provider": "ollama"
         },
         {
             "model": "gpt-4o-mini",
-            "is_open_ai": true
+            "provider": "openAi"
         },
         {
-            "model": "gpt-4o-mini",
-            "is_open_ai": true
+            "model": "gpt-4o",
+            "provider": "openAi"
+        },
+        {
+            "model": "gemini-2.5-pro-exp-03-25",
+            "provider": "google"
+        },
+        {
+            "model": "claude-3-7-sonnet-20250219",
+            "provider": "anthropic"
         }
     ],
     "embeddingModels": [
+        {
+            "model": "bge-m3",
+            "is_open_ai": false
+        },
+        {
+            "model": "snowflake-arctic-embed:22m",
+            "is_open_ai": false
+        },
         {
             "model": "text-embedding-3-large",
             "is_open_ai": true
         },
         {
-            "model": "all-minilm",
-            "is_open_ai": false
-        },
-        {
-            "model": "mxbai-embed-large",
-            "is_open_ai": false
+            "model": "text-embedding-3-small",
+            "is_open_ai": true
         }
     ],
     "evaluationExamples": [

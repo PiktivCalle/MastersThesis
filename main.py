@@ -2,7 +2,54 @@ from QueryGenerator.queryGenerator import QueryGenerator
 from QueryMemory.VectorStore import VectorStore
 from rich import print
 
-REFLECTION = True
+REFLECTION = False
+
+languageModels= [
+        {
+            "model": "llama3.3:70b",
+            "provider": "ollama"
+        },
+        {
+            "model": "aravhawk/llama4",
+            "provider": "ollama"
+        },
+        {
+            "model": "deepseek-r1:8b",
+            "provider": "ollama"
+        },
+        {
+            "model": "deepseek-r1:1.5b",
+            "provider": "ollama"
+        },
+        {
+            "model": "phi4",
+            "provider": "ollama"
+        },
+        {
+            "model": "gemma3:27b",
+            "provider": "ollama"
+        },
+        {
+            "model": "tinyllama",
+            "provider": "ollama"
+        },
+        {
+            "model": "gpt-4o-mini",
+            "provider": "openAi"
+        },
+        {
+            "model": "gpt-4o",
+            "provider": "openAi"
+        },
+        {
+            "model": "gemini-2.5-pro-exp-03-25",
+            "provider": "google"
+        },
+        {
+            "model": "claude-3-7-sonnet-20250219",
+            "provider": "anthropic"
+        }
+    ]
 
 def printQueryAndResult(result: dict):
     print(f"Input user prompt:\n[cyan]{result['query']}[/cyan]")
@@ -15,12 +62,13 @@ def printQueryAndResult(result: dict):
 
 def main():
     vc = VectorStore(embedding_model="nomic-embed-text", is_open_ai=False)
-    qg = QueryGenerator(chat_model="llama3.2", is_open_ai=False)
+
+    idx = -3
+    qg = QueryGenerator(chat_model=languageModels[idx]["model"], provider=languageModels[idx]["provider"])
 
     user_query = "How many three way intersections are there on the map?"
     
     examples = vc.retrieveExamples(user_query)
-    #print(examples)
     result = qg.generateAndExecuteCypherQuery(user_query, few_shot_examples=examples)
 
     printQueryAndResult(result)

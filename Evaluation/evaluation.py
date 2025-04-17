@@ -40,9 +40,11 @@ if __name__ == "__main__":
         evaluation_data = json.load(f)
 
     for language_model in evaluation_data["languageModels"]:
-        qg = QueryGenerator(chat_model=language_model["model"], is_open_ai=language_model["is_open_ai"])
+        qg = QueryGenerator(chat_model=language_model["model"], provider=language_model["provider"])
+        print(f"Using language model: {language_model["model"]}")
 
         for embedding_model in evaluation_data["embeddingModels"]:
             for idx, example in enumerate(evaluation_data["evaluationExamples"]):
-                vs = VectorStore(embedding_model=embedding_model["model"], is_open_ai=embedding_model["is_open_ai"] , database_folder=f"Evaluation/VectorDB/lang_{language_model}/memory_{idx}", evaluation=True)
+                vs = VectorStore(embedding_model=embedding_model["model"], is_open_ai=embedding_model["is_open_ai"] , database_folder=f"Evaluation/VectorDB/lang_{language_model}/prompt_{idx+1}", evaluation=True)
+                print(f"Using embedding model: {embedding_model["model"]}")
                 runExample(example=example, qg=qg, vs=vs)
