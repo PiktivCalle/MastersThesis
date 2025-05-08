@@ -1,0 +1,59 @@
+gpt-4o:
+    prompt 1 - 2
+    prompt 2 - 3
+    prompt 3 - 3
+    prompt 4 - 3
+
+deepseek/deepseek-r1-distill-qwen-1.5b:
+    prompt 1 - failed
+    prompt 2 - failed
+    prompt 3 - failed
+    prompt 4 - failed
+
+deepseek/deepseek-r1-distill-llama-8b
+    prompt 1 - failed
+    prompt 2 - 3
+    prompt 3 - failed
+    prompt 4 - failed
+
+microsoft/phi-4
+    prompt 1 - failed
+    prompt 2 - 3
+    prompt 3 - failed
+    prompt 4 - 6
+
+google/gemma-3-27b-it
+    prompt 1 - failed
+    prompt 2 - 3
+    prompt 3 - failed
+    prompt 4 - failed
+
+meta-llama/llama-3.2-1b-instruct
+    prompt 1 - failed
+    prompt 2 - failed
+    prompt 3 - failed
+    prompt 4 - failed
+
+meta-llama/llama-4-maverick
+    prompt 1 - failed
+    prompt 2 - 3
+    prompt 3 - 2
+    prompt 4 - 5
+
+gpt-4o-mini
+    prompt 1 - failed
+    prompt 2 - 3
+    prompt 3 - 4
+    prompt 4 - failed
+
+claude-3-7-sonnet-20250219
+    prompt 1 - failed
+    prompt 2 - 0
+    prompt 3 - 2
+    prompt 4 - 6
+
+gemini-2.5-pro-preview-03-25
+    prompt 1 - 2
+    prompt 2 - 3
+    prompt 3 - 3
+    prompt 4 - 3

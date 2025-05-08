@@ -1,44 +1,40 @@
 {
     "languageModels": [
         {
-            "model": "llama3.3:70b",
-            "provider": "ollama"
-        },
-        {
-            "model": "aravhawk/llama4",
-            "provider": "ollama"
-        },
-        {
-            "model": "deepseek-r1:8b",
-            "provider": "ollama"
-        },
-        {
-            "model": "deepseek-r1:1.5b",
-            "provider": "ollama"
-        },
-        {
-            "model": "phi4",
-            "provider": "ollama"
-        },
-        {
-            "model": "gemma3:27b",
-            "provider": "ollama"
-        },
-        {
-            "model": "tinyllama",
-            "provider": "ollama"
-        },
-        {
-            "model": "gpt-4o-mini",
-            "provider": "openAi"
+            "model": "gemini-2.5-pro-preview-03-25",
+            "provider": "google"
         },
         {
             "model": "gpt-4o",
             "provider": "openAi"
         },
         {
-            "model": "gemini-2.5-pro-exp-03-25",
-            "provider": "google"
+            "model": "deepseek/deepseek-r1-distill-qwen-1.5b",
+            "provider": "openRouter"
+        },
+        {
+            "model": "deepseek/deepseek-r1-distill-llama-8b",
+            "provider": "openRouter"
+        },
+        {
+            "model": "microsoft/phi-4",
+            "provider": "openRouter"
+        },
+        {
+            "model": "google/gemma-3-27b-it",
+            "provider": "openRouter"
+        },
+        {
+            "model": "meta-llama/llama-3.2-1b-instruct",
+            "provider": "openRouter"
+        },
+        {
+            "model": "meta-llama/llama-4-maverick",
+            "provider": "openRouter"
+        },
+        {
+            "model": "gpt-4o-mini",
+            "provider": "openAi"
         },
         {
             "model": "claude-3-7-sonnet-20250219",
@@ -47,101 +43,112 @@
     ],
     "embeddingModels": [
         {
-            "model": "bge-m3",
-            "is_open_ai": false
-        },
-        {
-            "model": "snowflake-arctic-embed:22m",
-            "is_open_ai": false
-        },
-        {
             "model": "text-embedding-3-large",
-            "is_open_ai": true
-        },
-        {
-            "model": "text-embedding-3-small",
             "is_open_ai": true
         }
     ],
     "evaluationExamples": [
         {
-            "prompt": "How many three way intersections are there on the map?",
-            "correctResult": "12",
+            "prompt": "Give me roads which are at the most 45m long, connected to an intersection which has a left turn with the following road being at least 150m long. I want the road IDS in a list.",
             "memoryItems": [
-                {
-                    "prompt": "How many intersections are there?",
-                    "query": "MATCH (r:Road) WHERE r.junctionId <> '-1' RETURN COUNT(DISTINCT r.junctionId)"
+                {  
+                    "prompt": "Get every road and one of its lanes",
+                    "query": "MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane) RETURN r1.id as road_id, l1.id as lane_id"
                 },
                 {
-                    "prompt": "What roads are going in to an intersection? ",
-                    "query": "MATCH(r1:Road)-[HAS_LANE]->(l1:Lane)-[PRECEDES]->(l2:Lane)-[ON_ROAD]->(r2:Road) WHERE r1.junctionId = '-1' AND r2.junctionId <> '-1' RETURN DISTINCT r1.id"
+                    "prompt": "Find lanes where one precedes another with a left turn",
+                    "query": "MATCH (l1:Lane)-[:PRECEDES {direction: 'left'}]->(l2:Lane) RETURN COUNT(l1)"
+                },
+                {
+                    "prompt": "Find all roads that connect to each other",
+                    "query": "MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane)-[:PRECEDES]->(l2:Lane) MATCH (l2)-[:ON_ROAD]->(r2:Road) RETURN [r1.id, r2.id] as road_ids"
+                },
+                {
+                    "prompt": "Find roads which are part of an intersection",
+                    "query": "MATCH (r1:Road) WHERE r1.junctionId <> '-1' RETURN r1.id"
+                },
+                {
+                    "prompt": "Find two roads, one of which being at the most 45m and the other being at least 150m long.",
+                    "query": "MATCH (r1:Road) MATCH (r2:Road) WHERE r1.length <=45 AND r2.length >= 150 RETURN [r1.id, r2.id] as road_ids LIMIT 1"
                 }
             ]
         },
         {
             "prompt": "How many roads are turning but are not part of a junction?",
-            "correctResult": "4",
             "memoryItems": [
                 {
-                    "prompt": "How many roads are there on the map?",
+                    "prompt": "How many roads are there in total",
                     "query": "MATCH (r: Road) RETURN COUNT(r) as amount_of_roads"
                 },
                 {
-                    "prompt": "Which roads are not part of a junction?",
-                    "query": "MATCH(r1:Road) WHERE r1.junctionId = '-1'  RETURN r1.id"
+                    "prompt": "Compute how much each road turns",
+                    "query": "MATCH (r1:Road) WITH (r1.finalHeading - r1.initialHeading) as heading_difference, r1 RETURN heading_difference, r1.id as road_id"
                 },
                 {
-                    "prompt": "How many roads are turning?",
-                    "query": "MATCH(r1:Road) WHERE (r1.finalHeading - r1.initialHeading) > 0.01  RETURN COUNT(r1.id)"
+                    "prompt": "Find roads which are part of an intersection",
+                    "query": "MATCH (r1:Road) WHERE r1.junctionId <> '-1' RETURN r1.id"
+                },
+                {
+                    "prompt": "Which roads are turning?",
+                    "query": "MATCH (r1:Road) WITH (r1.finalHeading - r1.initialHeading) as heading_difference, r1 WHERE abs(cos(heading_difference) - 1) > 0.01  RETURN heading_difference, r1.id as road_id"
                 }
             ]
         },
         {
-            "prompt": "Give me roads which are at the most 45m long, connected to an intersection which has a left turn with the connected road being at least 150m long. I want the road id of the both roads, as well as the intersection id.",
-            "correctResult": [
-                {
-                    "inc": 25,
-                    "junc": 332,
-                    "out": 10
-                },
-                {
-                    "inc": 16,
-                    "junc": 26,
-                    "out": 1
-                },
-                {
-                    "inc": 23,
-                    "junc": 255,
-                    "out": 12
-                },
-                {
-                    "inc": 25,
-                    "junc": 278,
-                    "out": 4
-                }
-            ],
+            "prompt": "How many three way intersections are there on the map?",
             "memoryItems": [
-                {
-                    "prompt": "How many roads are going straight?",
-                    "query": "MATCH(r1:Road)-[HAS_LANE]->(l1:Lane)-[PRECEDES {direction: 'straight'}]->() RETURN COUNT(DISTINCT r1)"
+                {  
+                    "prompt": "Get every road and one of its lanes",
+                    "query": "MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane) RETURN r1.id as road_id, l1.id as lane_id"
                 },
                 {
-                    "prompt": "",
-                    "query": ""
+                    "prompt": "Retrieve one lane pair where one precedes the next",
+                    "query": "MATCH (prev:Lane)-[:PRECEDES]->(next:Lane) RETURN [prev.id, next.id] LIMIT 1"
+                },
+                {
+                    "prompt": "Find the road associated with each lane",
+                    "query": "MATCH (l:Lane)-[:ON_ROAD]->(r:Road) RETURN l.id as lane_id, r.id as road_id"
+                },
+                {
+                    "prompt": "Find roads which are part of an intersection",
+                    "query": "MATCH (r1:Road) WHERE r1.junctionId <> '-1' RETURN r1.id"
+                },
+                {
+                    "prompt": "How many roads have 2 lanes?",
+                    "query": "MATCH (l:Lane)-[:ON_ROAD]->(r:Road) WITH COUNT(DISTINCT l) AS lane_count, r WHERE lane_count = 2 RETURN COUNT(r) as roads_with_two_lanes"
+                },
+                {
+                    "prompt": "How many junctions have three connected roads?",
+                    "query": "MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane)-[:PRECEDES]->(l2:Lane)-[:ON_ROAD]->(r2:Road) WHERE r2.junctionId <> '-1' WITH r2.junctionId AS junction, COUNT(DISTINCT r1) AS incomingCount WHERE incomingCount = 3 RETURN COUNT(DISTINCT junction) AS intersections_with_three_connected_roads;"
                 }
             ]
         },
         {
-            "prompt": "Give me a route which is between 400 and 500 meters long, involves three turns, at least one of them being a left turn. The route should take a minimum of 30 seconds to drive when driving in the speed limit of the road. Return the ids of the roads in the route.",
-            "correctResult": "",
+            "prompt": "Give me a route which is between 400 and 500 meters long, involves at least two turns, minimum of one being a left turn. The route should have at least 1 traffic sign which changes the speed on the road. Return the ids of the roads in the route.",
             "memoryItems": [
                 {
-                    "prompt": "",
-                    "query": ""
+                    "prompt": "Find a connected route with 3-10 different roads",
+                    "query": "MATCH (start: Road) CALL apoc.path.expandConfig( start, { relationshipFilter:'HAS_LANE>|PRECEDES>', minLevel:3, maxLevel:10, bfs:true, uniqueness:'NODE_PATH'}) YIELD path return path LIMIT 1"
                 },
                 {
-                    "prompt": "",
-                    "query": ""
+                    "prompt": "Output the roads which are part of a route consisting of 3-10 different roads",
+                    "query": "MATCH (start: Road) CALL apoc.path.expandConfig(start, { relationshipFilter:'HAS_LANE>|PRECEDES>', minLevel:3, maxLevel:10, bfs:true, uniqueness:'NODE_PATH' } ) YIELD path WITH start, [ l IN nodes(path) WHERE 'Lane' IN labels(l) AND EXISTS((l)-[:ON_ROAD]->()) | head( [ (l)-[:ON_ROAD]->(r) | r ] ) ] AS laneRoads WITH apoc.coll.toSet(start + laneRoads) as roads return roads LIMIT 1"
+                },
+                {
+                    "prompt": "Find a route consisting of 3-10 different roads which has at least one traffic sign setting the driving speed",
+                    "query": "MATCH (start: Road) CALL apoc.path.expandConfig(start, {relationshipFilter:'HAS_LANE>|PRECEDES>',minLevel:3, maxLevel:10, bfs:true, uniqueness:'NODE_PATH'}) YIELD path WITH start, [ l IN nodes(path) WHERE 'Lane' IN labels(l) AND EXISTS((l)-[:ON_ROAD]->()) | head( [ (l)-[:ON_ROAD]->(r) | r ] ) ] AS laneRoads WITH apoc.coll.toSet(start + laneRoads) AS roads WHERE ANY(r IN roads WHERE EXISTS { (r)-[:HAS_OBJECT]->() }) return roads LIMIT 1"
+                },
+                {
+                    "prompt": "Output the turn direction of each connection in a route consisting of 3-10 different roads",
+                    "query": "MATCH (start: Road) CALL apoc.path.expandConfig(start, {relationshipFilter:'HAS_LANE>|PRECEDES>',minLevel:3, maxLevel:10, bfs:true, uniqueness:'NODE_PATH' } ) YIELD path WITH [r IN relationships(path) WHERE type(r) = 'PRECEDES' | r.direction] AS directions return directions LIMIT 1"
+                },
+                {
+                    "prompt": "Output the total length of a route consisting of 3-10 different roads which is at least 600m long",
+                    "query": "MATCH (start: Road) CALL apoc.path.expandConfig(start, {relationshipFilter:'HAS_LANE>|PRECEDES>',minLevel:3, maxLevel:10, bfs:true, uniqueness:'NODE_PATH' } ) YIELD path WITH start, [ l IN nodes(path) WHERE 'Lane' IN labels(l) AND EXISTS((l)-[:ON_ROAD]->()) | head( [ (l)-[:ON_ROAD]->(r) | r ] ) ] AS laneRoads WITH apoc.coll.toSet(start + laneRoads) AS roads WITH reduce(total = 0, r IN roads | total + r.length) AS totalLength WHERE totalLength >= 600 return totalLength LIMIT 1"
+                },
+                {
+                    "prompt": "Find a route consisting of 3-10 different roads which has at least three turns with at least one being a right turn",
+                    "query": "MATCH (start: Road) CALL apoc.path.expandConfig(start, {relationshipFilter:'HAS_LANE>|PRECEDES>',minLevel:3, maxLevel:10, bfs:true, uniqueness:'NODE_PATH'}) YIELD path WITH path,[r IN relationships(path) WHERE type(r) = 'PRECEDES' | r.direction] AS directions WHERE size([ d IN directions WHERE d IN ['left', 'right'] ]) >= 2 AND 'right' in directions return path LIMIT 1"
                 }
             ]
         }

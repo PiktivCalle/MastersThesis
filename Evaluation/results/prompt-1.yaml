@@ -1,0 +1,29 @@
+deepseek/deepseek-r1-distill-qwen-1.5b:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: None
+    - result: I don't know the number of three-way intersections on the map because
+        the provided information is empty.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:PRECEDES]->(l1:Lane {lane_type: 'driving'})-[:PRECEDES]->(l2:Lane {lane_type: 'driving'})-[:PRECEDES]->(l3:Lane {lane_type: 'driving'})
+          WHERE
+                r1.junctionId <> '-1'
+          AND
+                l1.junctionId = l2.junctionId
+          AND
+                l2.junctionId = l3.junctionId
+          RETURN
+                COUNT(DISTINCT r1.junctionId) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 0
+    - result: None
+deepseek/deepseek-r1-distill-llama-8b:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: None
+    - result: None
+    - result: None

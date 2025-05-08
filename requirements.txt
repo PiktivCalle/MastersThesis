@@ -7,3 +7,4 @@ langchain-ollama
 langchain-neo4j
 langchain-chroma
 pysqlite3-binary
+ruamel.yaml

@@ -1,0 +1,1376 @@
+gpt-4o:
+  text-embedding-3-large:
+  - results:
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                p = (r1:Road)-[:HAS_LANE]->(l1:Lane)-[:PRECEDES*2..]->(l2:Lane)<-[:HAS_LANE]-(r2:Road)
+          WHERE
+                r1.length + r2.length >= 400
+          AND
+                r1.length + r2.length <= 500
+          AND
+                EXISTS {
+          MATCH
+                (l1)-[:PRECEDES {direction: 'left'}]->(:Lane)
+                }
+          AND
+                EXISTS {
+          MATCH
+                (r1)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.signal_type = 'speed'
+                }
+          RETURN
+                DISTINCT [r1.id,
+                r2.id] AS road_ids
+      - context: []
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: 3,
+                maxLevel: 10,
+                bfs: true,
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [node IN nodes(path)
+          WHERE
+                node:Road | node] AS roads
+          WHERE
+                reduce(totalLength = 0,
+                road IN roads | totalLength + road.length) >= 400
+          AND
+                reduce(totalLength = 0,
+                road IN roads | totalLength + road.length) <= 500
+          WITH
+                path,
+                roads
+          WHERE
+                size([rel IN relationships(path)
+          WHERE
+                type(rel) = 'PRECEDES'
+          AND
+                rel.direction IN ['left',
+                'right']]) >= 2
+          AND
+                size([rel IN relationships(path)
+          WHERE
+                type(rel) = 'PRECEDES'
+          AND
+                rel.direction = 'left']) >= 1
+          WITH
+                roads
+          MATCH
+                (road:Road)-[:HAS_SIGNAL]->(signal:Signal)
+          WHERE
+                road IN roads
+          AND
+                signal.signal_type = 'speed'
+          RETURN
+                [road IN roads | road.id] AS roadIds
+                LIMIT 1;
+      - context: []
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                reduce(totalLength = 0,
+                r IN relationships(path) | totalLength + coalesce(r.length,
+                0)) AS totalLength,
+                size([r IN relationships(path)
+          WHERE
+                r.direction = 'left']) AS leftTurns,
+                size([r IN relationships(path)
+          WHERE
+                r.direction IN ['left',
+                'right']]) AS totalTurns
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                leftTurns >= 1
+          AND
+                totalTurns >= 2
+          WITH
+                path,
+                [x IN nodes(path)
+          WHERE
+                'Road' IN labels(x)] AS roads
+          MATCH
+                (road:Road)-[:HAS_SIGNAL]->(signal:Signal)
+          WHERE
+                road IN roads
+          AND
+                signal.signal_type = 'speed'
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context: []
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes
+          WITH
+                [ l IN lanes
+                | head(
+                [ (l)-[:ON_ROAD]->(r)
+                | r
+                ]
+                )
+                ] AS roads,
+                lanes
+          WHERE
+                REDUCE(totalLength = 0,
+                road IN roads | totalLength + road.length) >= 400
+          AND
+                REDUCE(totalLength = 0,
+                road IN roads | totalLength + road.length) <= 500
+          AND
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          AND
+                SIZE([l IN lanes
+          WHERE
+                (l)-[:PRECEDES {direction: 'left'}]->()]) >= 1
+          AND
+                SIZE([l IN lanes
+          WHERE
+                (l)-[:PRECEDES {direction: 'left'}]->() OR (l)-[:PRECEDES {direction: 'right'}]->()]) >= 2
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context:
+        - roadIds:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                reduce(totalLength = 0,
+                r IN nodes(path) | totalLength + coalesce(r.length,
+                0)) AS totalLength,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                size([d IN directions
+          WHERE
+                d IN ['left',
+                'right']]) >= 2
+          AND
+                size([d IN directions
+          WHERE
+                d = 'left']) >= 1
+          WITH
+                path,
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes
+          WITH
+                path,
+                [ l IN lanes
+                | head(
+                [ (l)-[:ON_ROAD]->(r)
+                | r
+                ]
+                )
+                ] AS roads
+          WHERE
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context: []
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions
+          WITH
+                [ l IN lanes
+                | head(
+                [ (l)-[:ON_ROAD]->(r)
+                | r
+                ]
+                )
+                ] AS roads,
+                directions
+          WITH
+                reduce(total = 0,
+                r IN roads | total + r.length) AS totalLength,
+                roads,
+                directions
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                size(directions) >= 2
+          AND
+                'left' IN directions
+          AND
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context:
+        - roadIds:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions,
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes
+          WITH
+                path,
+                directions,
+                [ l IN lanes
+                | head(
+                [ (l)-[:ON_ROAD]->(r)
+                | r
+                ]
+                )
+                ] AS roads
+          WITH
+                path,
+                directions,
+                roads,
+                reduce(total = 0,
+                r IN roads | total + r.length) AS totalLength
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                size([d IN directions
+          WHERE
+                d IN ['left',
+                'right']]) >= 2
+          AND
+                'left' IN directions
+          AND
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context:
+        - roadIds:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+deepseek/deepseek-r1-distill-qwen-1.5b:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: The route is a short path between 400 and 500 meters, involving two
+        turns, with one being a left turn, and it includes a speed limit sign that
+        changes the speed. The roads involved are [list of road IDs].
+      intermediate_steps:
+      - query: |
+      - context: []
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+deepseek/deepseek-r1-distill-llama-8b:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+microsoft/phi-4:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: I don't know the answer. The provided information does not include details
+        about the lengths of the roads, the number of turns, or the presence of traffic
+        signs that change speed limits.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions
+          WITH
+                path,
+                directions,
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes
+          WITH
+                path,
+                directions,
+                [ l IN lanes
+                | head(
+                [ (l)-[:ON_ROAD]->(r)
+                | r
+                ]
+                )
+                ] AS roads
+          WITH
+                path,
+                directions,
+                roads,
+                reduce(total = 0,
+                r IN roads | total + r.length) AS totalLength
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                size([d IN directions
+          WHERE
+                d IN ['left',
+                'right',
+                'straight']]) >= 2
+          AND
+                'left' IN directions
+          AND
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [ r IN roads | r.id ] AS roadIds
+                LIMIT 1;
+      - context:
+        - roadIds:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+google/gemma-3-27b-it:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+meta-llama/llama-3.2-1b-instruct:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+meta-llama/llama-4-maverick:
+  text-embedding-3-large:
+  - results:
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                p=(r1:Road)-[:HAS_LANE*]->(r2:Road)
+          WHERE
+                r1.length + r2.length >= 400
+          AND
+                r1.length + r2.length <= 500
+          WITH
+                p,
+                r1,
+                r2
+          MATCH
+                (r1)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.signal_type = 'speed'
+          WITH
+                p,
+                r1,
+                r2,
+                s
+          MATCH
+                (r1)-[:HAS_LANE]->(l1:Lane)-[:PRECEDES {direction: 'left'}]->(l2:Lane)
+          WITH
+                p,
+                r1,
+                r2,
+                s,
+                l1,
+                l2
+          MATCH
+                (l2)-[:PRECEDES*1..]->(l3:Lane)
+          WHERE
+                (l3)-[:PRECEDES {direction: 'right'}]->(:Lane) OR (l3)-[:PRECEDES {direction: 'left'}]->(:Lane)
+          RETURN
+                DISTINCT r1.id,
+                r2.id
+      - context: []
+    - result: None
+    - result: None
+    - result: None
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions,
+                [r IN nodes(path)
+          WHERE
+                'Road' IN labels(r) | r.length] AS lengths,
+                [r IN nodes(path)
+          WHERE
+                'Road' IN labels(r) | r.id] AS roadIds,
+                [r IN nodes(path)
+          WHERE
+                'Road' IN labels(r)] AS roads
+          WHERE
+                REDUCE(totalLength = 0.0,
+                l IN lengths | totalLength + l) >= 400
+          AND
+                REDUCE(totalLength = 0.0,
+                l IN lengths | totalLength + l) <= 500
+          AND
+                SIZE(directions) >= 2
+          AND
+                'left' IN directions
+          AND
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                roadIds
+                LIMIT 1;
+      - context: []
+    - result: The ids of the roads in the route are 0, 40, 1, 67, 25, 339, 10.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions
+          WITH
+                [ l IN lanes
+                | head(
+                [ (l)-[:ON_ROAD]->(r)
+                | r
+                ]
+                )
+                ] AS roads,
+                directions
+          WITH
+                reduce(total = 0,
+                r IN roads | total + r.length) AS totalLength,
+                roads,
+                size([d IN directions
+          WHERE
+                d = 'left']) AS leftTurns,
+                size([d IN directions
+          WHERE
+                d IN ['left',
+                'right']]) AS totalTurns
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                leftTurns >= 1
+          AND
+                totalTurns >= 2
+          AND
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context:
+        - roadIds:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+    - result: The route with road ids 0, 40, 1, 67, 25, 339, 10 meets the given criteria,
+        so the ids of the roads in the route are 0, 40, 1, 67, 25, 339, 10.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes
+          WITH
+                path,
+                [ l IN lanes
+                | head(
+                [ (l)-[:ON_ROAD]->(r:Road)
+                | r
+                ]
+                )
+                ] AS roads
+          WITH
+                path,
+                roads,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions,
+                reduce(total = 0,
+                r IN roads | total + r.length) AS totalLength
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                size([d IN directions
+          WHERE
+                d IN ['left',
+                'right']]) >= 2
+          AND
+                'left' IN directions
+          AND
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context:
+        - roadIds:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+gpt-4o-mini:
+  text-embedding-3-large:
+  - results:
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.signal_type = 'speed'
+          AND
+                r.length >= 400
+          AND
+                r.length <= 500
+          WITH
+                r,
+                s
+          MATCH
+                path = (l1:Lane)-[:PRECEDES {direction: 'left'}]->(l2:Lane)-[:PRECEDES {direction: 'right'}]->(l3:Lane)
+          WHERE
+                (l1)-[:CONNECTS_TO]->(l2)
+          AND
+                (l2)-[:CONNECTS_TO]->(l3)
+          RETURN
+                DISTINCT r.id AS roadId
+      - context: []
+    - result: None
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [ r IN nodes(path)
+          WHERE
+                'Road' IN labels(r) ] AS roads,
+                [ s IN nodes(path)
+          WHERE
+                'Signal' IN labels(s)
+          AND
+                s.signal_type = 'speed' ] AS signals
+          WHERE
+                REDUCE(totalLength = 0,
+                r IN roads | totalLength + r.length) >= 400
+          AND
+                REDUCE(totalLength = 0,
+                r IN roads | totalLength + r.length) <= 500
+          AND
+                SIZE(signals) > 0
+          WITH
+                roads,
+                [ l IN nodes(path)
+          WHERE
+                'Lane' IN labels(l) ] AS lanes
+          WHERE
+                SIZE([ l IN lanes
+          WHERE
+                EXISTS((l)-[:PRECEDES {direction: 'left'}]->()) ]) > 0
+          AND
+                SIZE([ l IN lanes
+          WHERE
+                EXISTS((l)-[:PRECEDES {direction: 'right'}]->()) ]) > 0
+          RETURN
+                [ r IN roads | r.id ] AS roadIds
+                LIMIT 1;
+      - context: []
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                [ r IN [ x IN nodes(path)
+          WHERE
+                'Road' IN labels(x) ] | r.length ] AS lengths,
+                path
+          WITH
+                REDUCE(totalLength = 0,
+                length IN lengths | totalLength + length) AS totalLength,
+                path
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          WITH
+                [ x IN nodes(path)
+          WHERE
+                'Road' IN labels(x)
+                ] AS roads
+          WITH
+                roads,
+                [ r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.signal_type = 'turn'
+          AND
+                s.orientation IN ['left',
+                'right']
+                }
+                ] AS turns
+          WHERE
+                SIZE(turns) >= 2
+          AND
+                ANY(turn IN turns
+          WHERE
+                turn.orientation = 'left')
+          RETURN
+                [ r IN roads | r.id ] AS roadIds
+                LIMIT 1;
+      - context: []
+    - result: None
+    - result: None
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: '3',
+                maxLevel: '10',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions,
+                [x IN nodes(path)
+          WHERE
+                'Road' IN labels(x)] AS roads
+          WITH
+                roads,
+                directions,
+                reduce(totalLength = 0,
+                r IN roads | totalLength + r.length) AS totalLength
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                size([d IN directions
+          WHERE
+                d IN ['left',
+                'right']]) >= 2
+          AND
+                'left' IN directions
+          AND
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.signal_type CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context: []
+claude-3-7-sonnet-20250219:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: None
+    - result: 'Based on the provided information, a route that meets your criteria
+        (400-500 meters long, at least two turns with one being a left turn, and at
+        least one traffic sign changing speed) would use the following road IDs: 0,
+        40, 1, 67, 25, 339, 10.'
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                bfs: 'true',
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                [ x IN nodes(path)
+          WHERE
+                'Lane' IN labels(x)
+          AND
+                x.lane_type = 'driving'
+                ] AS lanes,
+                [r IN relationships(path)
+          WHERE
+                type(r) = 'PRECEDES' | r.direction] AS directions
+          WITH
+                [ l IN lanes
+                | head(
+                [ (l)<-[:HAS_LANE]-(r)
+                | r
+                ]
+                )
+                ] AS roads,
+                directions
+          WITH
+                roads,
+                directions,
+                reduce(total = 0,
+                r IN roads | total + r.length) AS totalLength
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          AND
+                size([d IN directions
+          WHERE
+                d IN ['left',
+                'right']]) >= 2
+          AND
+                'left' IN directions
+          AND
+                ANY(road IN roads
+          WHERE
+                EXISTS {
+                (road)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS roadIds
+                LIMIT 1;
+      - context:
+        - roadIds:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+gemini-2.5-pro-preview-03-25:
+  text-embedding-3-large:
+  - results:
+    - result: None
+    - result: None
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: 5,
+                maxLevel: 30,
+                bfs: true,
+                uniqueness: 'NODE_PATH'
+                }) YIELD path
+          WITH
+                path,
+                [n IN nodes(path)
+          WHERE
+                n:Lane | n] AS pathLanes
+          WITH
+                path,
+                pathLanes,
+                COLLECT(DISTINCT head([(l)<-[:HAS_LANE]-(r:Road) | r])) AS distinctRoads
+          WITH
+                path,
+                distinctRoads,
+                reduce(total = 0.0,
+                r IN distinctRoads | total + coalesce(r.length,
+                0.0)) AS totalLength
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          WITH
+                path,
+                distinctRoads,
+                totalLength,
+                size([rel IN relationships(path)
+          WHERE
+                type(rel) = 'PRECEDES'
+          AND
+                rel.direction = 'left']) AS leftTurns,
+                size([rel IN relationships(path)
+          WHERE
+                type(rel) = 'PRECEDES'
+          AND
+                rel.direction = 'right']) AS rightTurns
+          WHERE
+                leftTurns >= 1
+          AND
+                (leftTurns + rightTurns) >= 2
+          WITH
+                distinctRoads
+          WHERE
+                any(r IN distinctRoads
+          WHERE
+                EXISTS {
+          MATCH
+                (r)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.signal_type CONTAINS 'SPEED' })
+          RETURN
+                [r IN distinctRoads | r.id] AS roadIds
+                LIMIT 1
+      - context: []
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: 5,
+                maxLevel: 20,
+                bfs: true,
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [n IN nodes(path)
+          WHERE
+                'Lane' IN labels(n)
+          AND
+                n.lane_type = 'driving'] AS driving_lanes
+          WHERE
+                size(driving_lanes) > 0
+          WITH
+                path,
+                driving_lanes
+                UNWIND driving_lanes AS l
+          MATCH
+                (l)<-[:HAS_LANE]-(r:Road)
+          WITH
+                path,
+                driving_lanes,
+                collect(DISTINCT r) AS roads
+          WITH
+                path,
+                driving_lanes,
+                roads,
+                reduce(total = 0.0,
+                r IN roads | total + r.length) AS totalLength
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          WITH
+                path,
+                driving_lanes,
+                roads,
+                totalLength,
+                [rel IN relationships(path)
+          WHERE
+                type(rel) = 'PRECEDES'] AS turn_rels
+          WITH
+                path,
+                driving_lanes,
+                roads,
+                totalLength,
+                turn_rels,
+                size([rel IN turn_rels
+          WHERE
+                rel.direction = 'left' OR rel.direction = 'right']) AS totalTurns,
+                size([rel IN turn_rels
+          WHERE
+                rel.direction = 'left']) AS leftTurns
+          WHERE
+                totalTurns >= 2
+          AND
+                leftTurns >= 1
+          WITH
+                roads
+          WHERE
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS road_ids
+                LIMIT 1;
+      - context:
+        - road_ids:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+    - result: I'm sorry, but based on the information provided, I cannot determine
+        a route that meets those specific criteria. The available data does not include
+        details about road lengths, turns, or traffic signs.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start:Road)
+                CALL apoc.path.expandConfig(
+                start,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                minLevel: 3,
+                maxLevel: 15,
+                bfs: true,
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [ n IN nodes(path)
+          WHERE
+                'Lane' IN labels(n)
+          AND
+                n.lane_type = 'driving'
+                ] AS driving_lanes
+          WITH
+                path,
+                driving_lanes,
+                apoc.coll.toSet([l IN driving_lanes | head([(r:Road)-[:HAS_LANE]->(l) | r])]) AS unique_roads
+          WHERE
+                size(unique_roads) > 0
+          WITH
+                path,
+                unique_roads,
+                reduce(totalLength = 0.0,
+                r IN unique_roads | totalLength + r.length) AS route_length
+          WHERE
+                400.0 <= route_length <= 500.0
+          WITH
+                path,
+                unique_roads,
+                route_length,
+                [rel IN relationships(path)
+          WHERE
+                type(rel) = 'PRECEDES' | rel.direction] AS directions
+          WITH
+                unique_roads,
+                route_length,
+                directions,
+                [d IN directions
+          WHERE
+                d = 'left' OR d = 'right'] AS turns,
+                [d IN directions
+          WHERE
+                d = 'left'] AS left_turns
+          WHERE
+                size(turns) >= 2
+          AND
+                size(left_turns) >= 1
+          WITH
+                unique_roads
+          WHERE
+                ANY(r IN unique_roads
+          WHERE
+                EXISTS { (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed' })
+          RETURN
+                [r IN unique_roads | r.id] AS road_ids
+                LIMIT 1;
+      - context:
+        - road_ids:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+    - result: I'm sorry, but based on the information provided, I cannot determine
+        a route that meets those specific criteria. The available data does not include
+        details about road lengths, turns, or traffic signs.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (start_road:Road)
+                CALL apoc.path.expandConfig(
+                start_road,
+                {
+                relationshipFilter: 'HAS_LANE>|PRECEDES>',
+                labelFilter: '+Lane|+Road',
+                minLevel: 3,
+                maxLevel: 15,
+                bfs: true,
+                uniqueness: 'NODE_PATH'
+                }
+                ) YIELD path
+          WITH
+                path,
+                [n IN nodes(path)
+          WHERE
+                'Lane' IN labels(n)
+          AND
+                n.lane_type = 'driving'] AS driving_lanes
+          WHERE
+                size(driving_lanes) > 0
+          WITH
+                path,
+                driving_lanes,
+                apoc.coll.toSet(
+                [l IN driving_lanes | head([(r:Road)-[:HAS_LANE]->(l) | r]) ]
+                ) AS roads
+          WHERE
+                size(roads) > 0
+          WITH
+                path,
+                roads,
+                reduce(total = 0.0,
+                r IN roads | total + r.length) AS totalLength
+          WHERE
+                totalLength >= 400
+          AND
+                totalLength <= 500
+          WITH
+                path,
+                roads,
+                totalLength,
+                [rel IN relationships(path)
+          WHERE
+                type(rel) = 'PRECEDES' | rel.direction] AS directions
+          WITH
+                path,
+                roads,
+                totalLength,
+                directions,
+                [d IN directions
+          WHERE
+                d IN ['left',
+                'right']] AS turns
+          WHERE
+                size(turns) >= 2
+          AND
+                size([d IN turns
+          WHERE
+                d = 'left']) >= 1
+          WITH
+                roads,
+                totalLength,
+                turns
+          WHERE
+                ANY(r IN roads
+          WHERE
+                EXISTS {
+                (r)-[:HAS_OBJECT]->(o:Object)
+          WHERE
+                o.name CONTAINS 'Speed'
+                })
+          RETURN
+                [r IN roads | r.id] AS road_ids
+                LIMIT 1;
+      - context:
+        - road_ids:
+          - '0'
+          - '40'
+          - '1'
+          - '67'
+          - '25'
+          - '339'
+          - '10'
+    - result: None

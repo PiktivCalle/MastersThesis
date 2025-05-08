@@ -1,0 +1,483 @@
+gpt-4o:
+  text-embedding-3-large:
+  - results:
+    - result: There are 0 three way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId,
+                COUNT(r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                COUNT(junctionId) AS threeWayIntersections
+      - context:
+        - threeWayIntersections: 0
+    - result: There are no three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road {junctionId: '-1'})-[:HAS_LANE]->(l:Lane)
+          WITH
+                r,
+                COUNT(l) AS lane_count
+          WHERE
+                lane_count = 3
+          RETURN
+                COUNT(r) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 0
+    - result: There are 12 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:HAS_LANE]->(l1:Lane {lane_type: 'driving'})-[:PRECEDES]->(l2:Lane {lane_type: 'driving'})-[:ON_ROAD]->(r2:Road)
+          WHERE
+                r2.junctionId <> '-1'
+          WITH
+                r2.junctionId AS junction,
+                COUNT(DISTINCT r1) AS incomingCount
+          WHERE
+                incomingCount = 3
+          RETURN
+                COUNT(DISTINCT junction) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 12
+    - result: There are 12 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:HAS_LANE]->(l1:Lane {lane_type: 'driving'})-[:PRECEDES]->(l2:Lane {lane_type: 'driving'})-[:ON_ROAD]->(r2:Road)
+          WHERE
+                r2.junctionId <> '-1'
+          WITH
+                r2.junctionId AS junction,
+                COUNT(DISTINCT r1) AS incomingCount
+          WHERE
+                incomingCount = 3
+          RETURN
+                COUNT(DISTINCT junction) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 12
+deepseek/deepseek-r1-distill-qwen-1.5b:
+  text-embedding-3-large:
+  - results:
+    - results: None
+    - results: None
+    - results: None
+    - results: None
+deepseek/deepseek-r1-distill-llama-8b:
+  text-embedding-3-large:
+  - results:
+    - results: None
+    - results: None
+    - results: None
+    - results: None
+microsoft/phi-4:
+  text-embedding-3-large:
+  - results:
+    - results: None
+    - result: There are 0 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road {junctionId: '-1'})
+          WITH
+                r
+          MATCH
+                (r)-[:HAS_LANE]->(lane:Lane)
+          WITH
+                r,
+                COUNT(lane) AS laneCount
+          WHERE
+                laneCount = 3
+          RETURN
+                COUNT(r) AS threeWayIntersections;
+      - context:
+        - threeWayIntersections: 0
+    - results: None
+    - results: None
+google/gemma-3-27b-it:
+  text-embedding-3-large:
+  - results:
+    - result: ": I don't know the answer."
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId,
+                count(r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                count(junctionId)
+      - context:
+        - count(junctionId): 0
+    - result: There are 0 three way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId,
+                count(r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                count(junctionId) AS threeWayIntersections
+      - context:
+        - threeWayIntersections: 0
+    - result: "\nThere are 0 three way intersections on the map."
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId
+          MATCH
+                (r1:Road)-[:HAS_LANE]->(l1:Lane)-[:CONNECTS_TO]->(l2:Lane)-[:ON_ROAD]->(r2:Road)
+          WHERE
+                r1.junctionId = junctionId
+          AND
+                r2.junctionId = junctionId
+          WITH
+                junctionId,
+                count(DISTINCT r1) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                count(DISTINCT junctionId) AS three_way_intersections
+      - context:
+        - three_way_intersections: 0
+    - result: "\nThere are 0 three way intersections on the map."
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId,
+                COUNT(r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                COUNT(DISTINCT junctionId) AS three_way_intersections
+      - context:
+        - three_way_intersections: 0
+meta-llama/llama-3.2-1b-instruct:
+  text-embedding-3-large:
+  - results:
+    - result: There are 0 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)-[:HAS_LANE]->(l:Lane)-[:PRECEDES {direction: 'left'}]->(l2:Lane)-[:PRECEDES {direction: 'right'}]->(l3:Lane)-[:PRECEDES {direction: 'straight'}]->(l4:Lane)
+          WHERE
+                l.id = l4.id
+          RETURN
+                COUNT(l) AS intersections
+      - context:
+        - intersections: 0
+    - results: None
+    - results: None
+    - results: None
+meta-llama/llama-4-maverick:
+  text-embedding-3-large:
+  - results:
+    - result: There are 0 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId
+          MATCH
+                (r2:Road {junctionId: junctionId})
+          WITH
+                junctionId,
+                COUNT(r2) AS numRoads
+          WHERE
+                numRoads = 3
+          RETURN
+                COUNT(junctionId) AS numThreeWayIntersections
+      - context:
+        - numThreeWayIntersections: 0
+    - result: There are 12 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          RETURN
+                COUNT(DISTINCT r.junctionId) AS junction_count;
+      - context:
+        - junction_count: 12
+    - result: There are 0 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)-[:HAS_LANE]->(l:Lane {lane_type: 'driving'})-[:CONNECTS_TO]->(l2:Lane {lane_type: 'driving'})-[:ON_ROAD]->(r2:Road)
+          WHERE
+                r2.junctionId <> '-1'
+          AND
+                r.junctionId <> r2.junctionId
+          WITH
+                r2.junctionId AS junctionId,
+                COUNT(DISTINCT r) AS incomingCount
+          WHERE
+                incomingCount = 3
+          RETURN
+                COUNT(DISTINCT junctionId) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 0
+    - result: There are 0 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)-[:HAS_LANE]->(l:Lane {lane_type: 'driving'})
+          WITH
+                r.junctionId AS junction,
+                COUNT(DISTINCT r) AS road_count
+          WHERE
+                junction <> '-1'
+          AND
+                road_count = 3
+          RETURN
+                COUNT(junction) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 0
+gpt-4o-mini:
+  text-embedding-3-large:
+  - results:
+    - result: There are 38 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)-[:HAS_LANE]->(l1:Lane),
+                (r)-[:HAS_LANE]->(l2:Lane),
+                (r)-[:HAS_LANE]->(l3:Lane)
+          WHERE
+                l1.id <> l2.id
+          AND
+                l1.id <> l3.id
+          AND
+                l2.id <> l3.id
+          RETURN
+                COUNT(DISTINCT r) AS three_way_intersections
+      - context:
+        - three_way_intersections: 38
+    - result: There are 12 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)-[:HAS_LANE]->(l1:Lane),
+                (r)-[:HAS_LANE]->(l2:Lane),
+                (r)-[:HAS_LANE]->(l3:Lane)
+          WHERE
+                l1.id <> l2.id
+          AND
+                l1.id <> l3.id
+          AND
+                l2.id <> l3.id
+          AND
+                r.junctionId <> '-1'
+          RETURN
+                COUNT(DISTINCT r) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 12
+    - result: There are 0 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:HAS_LANE]->(l1:Lane)-[:CONNECTS_TO]->(l2:Lane)-[:HAS_LANE]->(r2:Road)
+          WHERE
+                r1.junctionId <> '-1'
+          AND
+                r2.junctionId <> '-1'
+          AND
+                r1 <> r2
+          WITH
+                r1.junctionId AS junction,
+                COUNT(DISTINCT r1) AS incomingCount
+          WHERE
+                incomingCount = 3
+          RETURN
+                COUNT(DISTINCT junction) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 0
+    - result: There are 12 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:HAS_LANE]->(l1:Lane {lane_type: 'driving'}),
+                (r2:Road)-[:HAS_LANE]->(l2:Lane {lane_type: 'driving'}),
+                (r3:Road)-[:HAS_LANE]->(l3:Lane {lane_type: 'driving'})
+          WHERE
+                r1.junctionId = r2.junctionId
+          AND
+                r2.junctionId = r3.junctionId
+          AND
+                r1.junctionId <> '-1'
+          RETURN
+                COUNT(DISTINCT r1.junctionId) AS three_way_intersections;
+      - context:
+        - three_way_intersections: 12
+claude-3-7-sonnet-20250219:
+  text-embedding-3-large:
+  - results:
+    - result: There are 0 three way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> "-1"
+          WITH
+                r.junctionId AS junctionId,
+                COUNT(r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                COUNT(junctionId) AS threeWayIntersections
+      - context:
+        - threeWayIntersections: 0
+    - result: There are 0 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junction,
+                COUNT(r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                COUNT(junction) AS threeWayIntersections
+      - context:
+        - threeWayIntersections: 0
+    - result: There are 0 three way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId,
+                COUNT(r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                COUNT(junctionId) AS threeWayIntersections;
+      - context:
+        - threeWayIntersections: 0
+    - result: There are 0 three way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junction,
+                COUNT(DISTINCT r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                COUNT(junction) AS threeWayIntersections
+      - context:
+        - threeWayIntersections: 0
+gemini-2.5-pro-preview-03-25:
+  text-embedding-3-large:
+  - results:
+    - result: There are 0 three way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId,
+                count(r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                count(junctionId) AS threeWayIntersectionCount
+      - context:
+        - threeWayIntersectionCount: 0
+    - result: There are 0 three way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (j:Road)
+          WHERE
+                j.junctionId <> '-1'
+          MATCH
+                (j)-[:HAS_LANE]->(j_lane:Lane)
+          MATCH
+                (other_lane:Lane)-[:CONNECTS_TO]-(j_lane)
+          MATCH
+                (other_road:Road)-[:HAS_LANE]->(other_lane)
+          WHERE
+                other_road <> j
+          WITH
+                j,
+                count(DISTINCT other_road) AS connected_roads_count
+          WHERE
+                connected_roads_count = 3
+          RETURN
+                count(j) AS three_way_intersection_count
+      - context:
+        - three_way_intersection_count: 0
+    - result: There are 12 three-way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:HAS_LANE]->(l1:Lane {lane_type: 'driving'})-[:PRECEDES]->(l2:Lane {lane_type: 'driving'})<-[:HAS_LANE]-(r2:Road)
+          WHERE
+                r2.junctionId <> '-1'
+          WITH
+                r2.junctionId AS junction,
+                COUNT(DISTINCT r1) AS connectedRoadCount
+          WHERE
+                connectedRoadCount = 3
+          RETURN
+                COUNT(DISTINCT junction) AS three_way_intersection_count;
+      - context:
+        - three_way_intersection_count: 12
+    - result: There are 0 three way intersections on the map.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId IS NOT NULL
+          AND
+                r.junctionId <> '-1'
+          WITH
+                r.junctionId AS junctionId,
+                COUNT(DISTINCT r) AS roadCount
+          WHERE
+                roadCount = 3
+          RETURN
+                COUNT(DISTINCT junctionId) AS three_way_intersection_count
+      - context:
+        - three_way_intersection_count: 0

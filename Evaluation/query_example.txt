@@ -1,0 +1,126 @@
+How many three way intersections are there on the map?
+EXPECTED RESULT: 5
+
+MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane)-[:PRECEDES]->(l2:Lane)-[:ON_ROAD]->(r2:Road) 
+WHERE 
+    r2.junctionId <> '-1' 
+WITH 
+    r2.junctionId AS junction, COUNT(DISTINCT r1) AS incomingCount 
+WHERE 
+    incomingCount = 3 
+RETURN 
+    COUNT(DISTINCT junction) AS threeWayIntersectionCount;
+
+
+------------
+How many roads are turning but are not part of a junction?
+EXPECTED RESULT: 4
+
+MATCH (r1:Road) 
+WITH 
+    (r1.finalHeading - r1.initialHeading) as heading_diff, r1 
+WHERE 
+    r1.junctionId = '-1' AND abs(cos(heading_diff) - 1) > 0.01 
+RETURN 
+    COUNT(r1.id)
+
+
+------------
+Give me roads which are at the most 45m long, connected to an intersection which has a left turn with the following road being at least 150m long. I want the road IDS in a list.
+EXPECTED RESULT: [
+    {
+        "inc": 25,
+        "junc": 339,
+        "out": 10
+    },
+    {
+        "inc": 16,
+        "conn": 33,
+        "out": 1
+    },
+    {
+        "inc": 23,
+        "junc": 277,
+        "out": 12
+    },
+    {
+        "inc": 18,
+        "junc": 304,
+        "out": 4
+    }
+]
+
+MATCH (r1:Road)-[:HAS_LANE]->(l1:Lane)-[:PRECEDES {direction: 'left'}]->(l2:Lane)-[:ON_ROAD]->(r2:Road)-[:HAS_LANE]->(l2)-[:PRECEDES]->(l3:Lane)-[:ON_ROAD]->(r3:Road) 
+
+WHERE 
+    r2.junctionId <> '-1' AND r1.length <= 45 AND r3.length >= 150 
+
+WITH 
+    [r1.id, r2.id, r3.id] as road_ids 
+
+RETURN 
+    road_ids
+
+
+------------
+Give me a route which is between 400 and 500 meters long, involves at least two turns, minimum of one being a left turn. The route should have at least 1 traffic sign which changes the speed on the road. Return the ids of the roads in the route.
+EXPECTED RESULT: Manual check
+
+MATCH (start:Road)
+CALL apoc.path.expandConfig(
+  start, {
+    relationshipFilter: 'HAS_LANE>|PRECEDES>',
+    labelFilter: NULL,   
+    minLevel: 3,
+    maxLevel: 6,
+    bfs: true,
+    uniqueness: 'NODE_PATH'  
+  }
+                         
+) YIELD path
+
+WITH
+  // Loop through each node in the path
+  [ x IN nodes(path)
+      // Extract all lane nodes
+      WHERE 'Lane' IN labels(x)
+  ] AS lanes
+    
+  [r IN relationships(path) WHERE type(r) = 'PRECEDES' | r.direction] AS directions
+
+WITH
+  directions,
+  // Loop through each lane node
+  [ l IN lanes
+      | head(
+          // Extract the road that the lane is on
+          [ (l)-[:ON_ROAD]->(r)
+          | r
+          ]
+      )
+  ] AS roads
+
+WITH
+  directions,
+  roads,
+  reduce(total = 0, r IN roads | total + r.length) AS totalLength
+  
+WHERE
+  totalLength >= 400
+  AND totalLength <= 500
+  AND size([ d IN directions WHERE d IN ['left', 'right'] ]) >= 2
+  AND 'left' IN directions
+  AND ANY(r IN roads WHERE EXISTS { (r)-[:HAS_OBJECT]->() }) 
+
+WITH
+  [r IN roads | r.id] AS roadIds,
+  totalLength,
+  abs(totalLength - 450)    AS distanceFromIdeal
+ORDER BY distanceFromIdeal ASC
+LIMIT 1
+
+RETURN
+  roadIds,
+  totalLength,
+  distanceFromIdeal;
+  

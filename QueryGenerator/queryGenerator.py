@@ -15,12 +15,12 @@ Always return a correct Cypher query based on the user's question.
 ### Neo4j Schema:
 - **Node Labels and Properties:**
   - `(:Road)`: {{ `length`: FLOAT, `finalHeading`: FLOAT, `initialHeading`: FLOAT, `junctionId`: STRING ('-1' if not a junction), `id`: STRING }}
-  - `(:Lane)`: {{ `travelDirection`: STRING, `lane_type`: STRING, `id`: STRING }}
+  - `(:Lane)`: {{ `lane_type`: STRING, `id`: STRING }}
   - `(:Signal)`: {{ `name`: STRING, `id`: STRING, `orientation`: STRING, `signal_type`: STRING }}
   - `(:Object)`: {{ `object_type`: STRING, `id`: STRING, `orientation`: STRING, `name`: STRING }}
 
 - **Relationships and Properties:**
-  - `(:Road)-[:HAS_LANE {{side: STRING}}]->(:Lane)`
+  - `(:Road)-[:HAS_LANE]->(:Lane)`
   - `(:Lane)-[:PRECEDES {{direction: STRING}}]->(:Lane)`
   - `(:Road)-[:HAS_OBJECT]->(:Object)`
   - `(:Road)-[:HAS_SIGNAL]->(:Signal)`
@@ -31,6 +31,7 @@ Always return a correct Cypher query based on the user's question.
 - Never use a **property name** which is not in the schema
 - Always filter by **node properties** when searching.
 - When using relationships, include their properties when needed.
+- When using the direction property, the only valid directions are: 'left', 'right', and 'straight'. These are case sensitive.
 """
 
 class QueryGenerator:
@@ -71,26 +72,34 @@ class QueryGenerator:
                 model=chat_model,
                 temperature=temperature
             )
+
+        elif provider == "openRouter":
+            self.llm = ChatOpenAI(
+                api_key=os.environ.get("OPENROUTER_API_KEY"),
+                temperature=temperature,
+                base_url="https://openrouter.ai/api/v1",
+                model=chat_model
+            )
     
     def generateAndExecuteCypherQuery(self, user_query: str, few_shot_examples: list[dict] = None):
         if few_shot_examples:
             single_shot_template = PromptTemplate(
                 input_variables=["prompt", "query"],
-                template="USER: {prompt}\nCypher: {query}\n"
+                template="###\nINPUT: {prompt}\nOUTPUT: \n'''cypher\n{query}'''\n"
             )
 
             few_shot_template = FewShotPromptTemplate(
                 examples=few_shot_examples,
                 example_prompt=single_shot_template,
-                suffix="\n\n### Current question:\n\nUSER: {question}\nCypher: ",
+                suffix="\n### Current question:\nINPUT: {question}\nOUTPUT: ",
                 input_variables=["question"],
-                prefix=SYSTEM_MESSAGE + "\n\n### Example Queries:\n\n"
+                prefix=SYSTEM_MESSAGE + "\n### Example Queries:\n"
             )
             prompt_template = few_shot_template  
         else: 
             no_shot_template = PromptTemplate(
                 input_variables=["question"],
-                template=SYSTEM_MESSAGE + "\n\nUSER: {question}\nCypher: "
+                template=SYSTEM_MESSAGE + "\nINPUT: {question}\nOUTPUT: "
             )
             prompt_template = no_shot_template
 

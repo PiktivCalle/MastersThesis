@@ -1,0 +1,542 @@
+gpt-4o:
+  text-embedding-3-large:
+  - results:
+    - result: 5 roads are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                ABS(r.finalHeading - r.initialHeading) > 0.1
+          RETURN
+                count(r) AS numberOfTurningRoads
+      - context:
+        - numberOfTurningRoads: 5
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                ABS(r.finalHeading - r.initialHeading) > 0.1
+          RETURN
+                COUNT(r) AS numberOfTurningRoads;
+      - context:
+        - numberOfTurningRoads: 5
+    - result: 5 roads are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WHERE
+                r1.junctionId = '-1'
+          AND
+                ABS(r1.finalHeading - r1.initialHeading) > 0.01
+          RETURN
+                COUNT(r1) AS number_of_turning_roads;
+      - context:
+        - number_of_turning_roads: 5
+    - result: There are 4 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WITH
+                (r1.finalHeading - r1.initialHeading) AS heading_difference,
+                r1
+          WHERE
+                abs(cos(heading_difference) - 1) > 0.01
+          AND
+                r1.junctionId = '-1'
+          RETURN
+                count(r1) AS number_of_turning_roads_not_in_junction;
+      - context:
+        - number_of_turning_roads_not_in_junction: 4
+deepseek/deepseek-r1-distill-qwen-1.5b:
+  text-embedding-3-large:
+  - results:
+    - results: None
+    - results: None
+    - results: None
+    - results: None
+deepseek/deepseek-r1-distill-llama-8b:
+  text-embedding-3-large:
+  - results:
+    - results: None
+    - result: The number of roads that are turning but not part of a junction is 5.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                ABS(r.initialHeading - r.finalHeading) > 0.1
+          RETURN
+                COUNT(r.id) AS turning_roads_count;
+      - context:
+        - turning_roads_count: 5
+    - result: The number of roads that are turning but not part of a junction is 5.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                abs(r.finalHeading - r.initialHeading) > 0.1
+          AND
+                r.junctionId = '-1'
+          RETURN
+                COUNT(r.id) AS total_roads_turning_not_junction;
+      - context:
+        - total_roads_turning_not_junction: 5
+    - result: The number of roads that are turning but not part of a junction is not
+        provided in the given information. Therefore, I cannot determine the exact
+        number of such roads.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WITH
+                (r.finalHeading - r.initialHeading) AS heading_difference,
+                r
+          WHERE
+                abs(cos(heading_difference) - 1) > 0.01
+          AND
+                r.junctionId = '-1'
+          RETURN
+                COUNT(r);
+      - context:
+        - COUNT(r): 4
+microsoft/phi-4:
+  text-embedding-3-large:
+  - results:
+    - result: There are 9 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                r.initialHeading <> r.finalHeading
+          RETURN
+                COUNT(r) AS turningRoadsNotInJunction
+      - context:
+        - turningRoadsNotInJunction: 9
+    - result: The information provided indicates that there are 9 turning roads. However,
+        it does not specify how many of these roads are not part of a junction. Therefore,
+        I don't know the exact number of turning roads that are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                r.initialHeading <> r.finalHeading
+          RETURN
+                COUNT(r) AS turningRoadsCount;
+      - context:
+        - turningRoadsCount: 9
+    - result: The information provided indicates that there are 5 turning roads. However,
+        it does not specify how many of these roads are not part of a junction. Therefore,
+        I don't know the exact number of turning roads that are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WHERE
+                r1.junctionId = '-1'
+          AND
+                ABS(r1.finalHeading - r1.initialHeading) > 0.01
+          RETURN
+                COUNT(r1) AS turning_roads_count;
+      - context:
+        - turning_roads_count: 5
+    - result: There are 4 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WITH
+                (r1.finalHeading - r1.initialHeading) AS heading_difference,
+                r1
+          WHERE
+                abs(cos(heading_difference) - 1) > 0.01
+          AND
+                r1.junctionId = '-1'
+          RETURN
+                COUNT(r1) AS turning_roads_not_in_junction;
+      - context:
+        - turning_roads_not_in_junction: 4
+google/gemma-3-27b-it:
+  text-embedding-3-large:
+  - results:
+    - result: "\n5 roads are turning but are not part of a junction."
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                abs(r.finalHeading - r.initialHeading) > 0.1
+          AND
+                r.junctionId = '-1'
+          RETURN
+                count(r)
+      - context:
+        - count(r): 5
+    - result: "\n5 roads are turning but are not part of a junction."
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WHERE
+                r1.junctionId = '-1'
+          AND
+                abs(r1.finalHeading - r1.initialHeading) > 0.1
+          RETURN
+                count(r1.id)
+      - context:
+        - count(r1.id): 5
+    - result: 5 roads are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WHERE
+                r1.junctionId = '-1'
+          AND
+                abs(r1.finalHeading - r1.initialHeading) > 0.1
+          RETURN
+                count(r1.id) AS num_turning_roads
+      - context:
+        - num_turning_roads: 5
+    - result: I don't know the answer.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WHERE
+                r1.junctionId = '-1'
+          AND
+                abs(cos(r1.finalHeading - r1.initialHeading) - 1) > 0.01
+          RETURN
+                count(r1.id) AS number_of_roads;
+      - context:
+        - number_of_roads: 4
+meta-llama/llama-3.2-1b-instruct:
+  text-embedding-3-large:
+  - results:
+    - results: None
+    - result: I don't know the answer to this question.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.orientation = 'straight'
+          AND
+                r1.junctionId = '-1'
+          RETURN
+                COUNT(r1.id) AS num_roads_turning;
+      - context:
+        - num_roads_turning: 0
+    - result: '[]'
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.name = 'Straight'
+          AND
+                r1.junctionId = '-1'
+          WITH
+                r1.id AS road_id,
+                r1.length AS road_length,
+                r1.finalHeading AS road_final_heading,
+                r1.initialHeading AS road_initial_heading
+          RETURN
+                road_id,
+                road_length,
+                road_final_heading,
+                road_initial_heading;
+      - context: []
+    - result: I don't know the answer to this question.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)-[:HAS_SIGNAL]->(s:Signal)
+          WHERE
+                s.name = 'Straight'
+          AND
+                r1.junctionId = '-1'
+          WITH
+                r1.finalHeading AS heading_difference,
+                r1.id AS road_id
+          RETURN
+                heading_difference,
+                road_id;
+      - context: []
+meta-llama/llama-4-maverick:
+  text-embedding-3-large:
+  - results:
+    - result: There are 5 roads that meet the specified condition.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                abs(r.initialHeading - r.finalHeading) > 0.1
+          RETURN
+                count(r) AS count
+      - context:
+        - count: 5
+    - result: There are 5 roads that meet the specified condition.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                abs(r.initialHeading - r.finalHeading) > 0.1
+          RETURN
+                count(r.id) AS count;
+      - context:
+        - count: 5
+    - result: There are 5 roads.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                abs(r.finalHeading - r.initialHeading) > 0.1
+          RETURN
+                count(r) AS number_of_roads;
+      - context:
+        - number_of_roads: 5
+    - result: There are 4 roads.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WITH
+                (r1.finalHeading - r1.initialHeading) AS heading_difference,
+                r1
+          WHERE
+                abs(cos(heading_difference) - 1) > 0.01
+          AND
+                r1.junctionId = '-1'
+          RETURN
+                count(r1.id) AS number_of_roads;
+      - context:
+        - number_of_roads: 4
+gpt-4o-mini:
+  text-embedding-3-large:
+  - results:
+    - result: There are 22 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                (abs(r.finalHeading - r.initialHeading) < 0.1 OR
+                abs(r.finalHeading - r.initialHeading) > 3.0)
+          RETURN
+                count(r) AS turningRoadsCount
+      - context:
+        - turningRoadsCount: 22
+    - result: There are 5 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                (r.finalHeading < r.initialHeading - 0.1 OR r.finalHeading > r.initialHeading + 0.1)
+          RETURN
+                COUNT(r) AS turningRoadsCount;
+      - context:
+        - turningRoadsCount: 5
+    - result: There are 5 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WHERE
+                r1.junctionId = '-1'
+          AND
+                abs(r1.finalHeading - r1.initialHeading) > 0.1
+          RETURN
+                count(r1) AS turning_roads_count;
+      - context:
+        - turning_roads_count: 5
+    - result: There are 4 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WITH
+                (r1.finalHeading - r1.initialHeading) AS heading_difference,
+                r1
+          WHERE
+                abs(cos(heading_difference) - 1) > 0.01
+          AND
+                r1.junctionId = '-1'
+          RETURN
+                count(r1) AS turning_roads_count;
+      - context:
+        - turning_roads_count: 4
+claude-3-7-sonnet-20250219:
+  text-embedding-3-large:
+  - results:
+    - result: There are 4 roads that are turning but not part of a junction. These
+        roads have significant changes in their heading that classify them as turning
+        roads, rather than just slight variations that would still be considered straight
+        roads.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          WITH
+                r,
+                CASE
+                WHEN ABS(r.finalHeading - r.initialHeading) <= 3.14159 THEN ABS(r.finalHeading - r.initialHeading)
+                ELSE 6.28318 - ABS(r.finalHeading - r.initialHeading)
+                END AS headingChange
+          WHERE
+                headingChange > 0.5236
+          RETURN
+                COUNT(r) AS numTurningRoadsNotInJunction
+      - context:
+        - numTurningRoadsNotInJunction: 4
+    - result: There are 4 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          WITH
+                r,
+                CASE
+                WHEN ABS(r.finalHeading - r.initialHeading) > 3.14159
+                THEN 6.28318 - ABS(r.finalHeading - r.initialHeading)
+                ELSE ABS(r.finalHeading - r.initialHeading)
+                END AS headingDifference
+          WHERE
+                headingDifference > 0.2
+          RETURN
+                COUNT(r) AS turningRoadsNotInJunction
+      - context:
+        - turningRoadsNotInJunction: 4
+    - result: There are 4 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          WITH
+                r,
+                abs(r.finalHeading - r.initialHeading) AS rawDiff
+          WITH
+                r,
+                CASE
+                WHEN rawDiff > 3.14159265359 THEN 2 * 3.14159265359 - rawDiff
+                ELSE rawDiff
+                END AS heading_difference
+          WHERE
+                heading_difference > 0.175
+          RETURN
+                count(r) AS turning_non_junction_roads
+      - context:
+        - turning_non_junction_roads: 4
+    - result: There are 4 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                abs(cos(r.finalHeading - r.initialHeading) - 1) > 0.01
+          RETURN
+                count(r) as numberOfTurningNonJunctionRoads;
+      - context:
+        - numberOfTurningNonJunctionRoads: 4
+gemini-2.5-pro-preview-03-25:
+  text-embedding-3-large:
+  - results:
+    - result: There are 5 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                abs(r.finalHeading - r.initialHeading) > 0.1
+          RETURN
+                count(r) AS numberOfTurningRoadsNotInJunction
+      - context:
+        - numberOfTurningRoadsNotInJunction: 5
+    - result: There are 5 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          AND
+                abs(r.finalHeading - r.initialHeading) > 0.1
+          RETURN
+                count(r);
+      - context:
+        - count(r): 5
+    - result: There are 5 roads that are turning but are not part of a junction.
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r:Road)
+          WHERE
+                r.junctionId = '-1'
+          WITH
+                r,
+                abs(r.finalHeading - r.initialHeading) AS heading_difference
+          WHERE
+                heading_difference > 0.1
+          RETURN
+                count(r) AS turning_non_junction_roads_count
+      - context:
+        - turning_non_junction_roads_count: 5
+    - result: 'Helpful Answer: There are 4 roads that are turning but are not part
+        of a junction.'
+      intermediate_steps:
+      - query: |-
+          MATCH
+                (r1:Road)
+          WITH
+                (r1.finalHeading - r1.initialHeading) AS heading_difference,
+                r1
+          WHERE
+                abs(cos(heading_difference) - 1) > 0.01
+          AND
+                r1.junctionId = '-1'
+          RETURN
+                count(r1) AS number_of_turning_non_junction_roads;
+      - context:
+        - number_of_turning_non_junction_roads: 4

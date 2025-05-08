@@ -28,8 +28,7 @@ class VectorStore:
 
         if not evaluation:
             self.addInitialExamplesToMemory()
-            #self.combineDifferentEmbeddingModelMemoryItems()
-
+            
         print("\n==========Loaded ",database_path," memory. The database has ", len(
             self.query_memory._collection.get(include=['embeddings'])['embeddings']), " items.==========\n")
 
@@ -66,29 +65,6 @@ class VectorStore:
         if( len(prompts) > 0 ):
             self.query_memory.add_texts(texts=prompts, metadatas=metadatas)
 
-    def combineDifferentEmbeddingModelMemoryItems(self):
-        embedding_models = os.listdir(path=self.database_folder)
-
-        for model in embedding_models:
-            if model == self.embedding_model: continue
-
-            other_database_path = os.path.join(f'./{self.database_folder}', f'{model}/')
-            other_query_memory = Chroma(
-                embedding_function=self.createEmbeddingModel(model),
-                persist_directory=other_database_path
-            )
-            other_documents = other_query_memory._collection.get(
-                include=['metadatas']
-            )
-            
-            current_documents = self.query_memory._collection.get(
-                include=['metadatas']
-            )
-
-            for i in range(0, len(other_documents['metadatas'])):
-                if (metadata := other_documents['metadatas'][i]) not in current_documents['metadatas']:
-                    self.addExampleToMemory(metadata["prompt"], metadata["query"])
-
     def addExampleToMemory(self, prompt: str, query: str):
         query = query.replace("{", "{{")
         query = query.replace("}", "}}")
@@ -98,7 +74,7 @@ class VectorStore:
                 self.query_memory._collection.get(include=['embeddings'])['embeddings']), " items.\n")
 
 
-    def retrieveExamples(self, user_query: str, k: int = 10, maximum_accepted_similarity_score: float = 1.5):
+    def retrieveExamples(self, user_query: str, k: int = 10, maximum_accepted_similarity_score: float = 15):
         similarity_results = self.query_memory.similarity_search_with_score(
             query=user_query,
             k=k
@@ -106,8 +82,9 @@ class VectorStore:
 
         fewshot_results = []
         for idx in range(0, len(similarity_results)):
-            if similarity_results[idx][-1] > maximum_accepted_similarity_score: continue
+            #if similarity_results[idx][-1] > maximum_accepted_similarity_score: continue
 
             fewshot_results.append(similarity_results[idx][0].metadata)
             
+        print(f"Retrieved {len(fewshot_results)} examples")
         return fewshot_results
